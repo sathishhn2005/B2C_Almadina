@@ -1,0 +1,124 @@
+<ion-view class="page-home travel-type travel-calculate bg">
+    <common-header show-options="true" show-steps="true" start="1" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+    <ion-content class="content-travel-calculate has-header">
+    	<div class="max-300">
+    		
+			<div class="travel-to">
+		
+				<h2>{{"INSURE TYPE" | translate}}</h2>
+				<div class="shadow">
+					<div class="travel-destination-wrap" ng-click="vm.setInsureType('individual')" ng-class="{'active': travelTakaful.for == 'individual'}">
+			        	<div class="row">
+			        		<div class="col col-40">
+								<img src="./img/customer-login.png" alt="">
+			        		</div>
+			        		<div class="col col-60 home-heading">{{"INDIVIDUAL" | translate}}</div>
+			        	</div>
+			        </div>
+			        <div class="travel-destination-wrap border-none" ng-click="vm.setInsureType('family')" ng-class="{'active': travelTakaful.for == 'family'}">
+			        	<div class="row">
+			        		<div class="col col-40">
+								<img src="./img/family.png" alt="">
+			        		</div>
+			        		<div class="col col-60 home-heading">{{"FAMILY" | translate}}
+			        		<p>{{"Restricted Benefits / Cover" | translate}}</p></div>
+			        	</div>
+			        </div>
+		        </div>
+
+
+
+
+				<h2 class="travel-to-heading">{{"TRAVELLING TO" | translate}}</h2>
+				<div class="shadow">
+			        <div class="travel-destination-wrap" ng-click="travelTakaful.CoverageType = '01'" ng-if="travelTakaful.for == 'individual' || !travelTakaful.for" ng-class="{'active' : travelTakaful.CoverageType == '01'}">
+			        	<div class="row">
+			        		<div class="col col-40"><img src="./img/worldwide.png" alt=""></div>
+			        		<div class="col col-60 home-heading">{{"WORLDWIDE Including" | translate}} <br>{{"USA" | translate}} &amp; {{"Canada" | translate}}</div>
+			        	</div>
+			        </div>
+			        <div class="travel-destination-wrap" ng-click="travelTakaful.CoverageType = '02'" ng-if="travelTakaful.for == 'individual' || !travelTakaful.for" ng-class="{'active' : travelTakaful.CoverageType == '02'}">
+			        	<div class="row">
+			        		<div class="col col-40"><img src="./img/excluding-canada.png" alt=""></div>
+			        		<div class="col col-60 home-heading">{{"WORLDWIDE Excluding" | translate}} <br>{{"USA" | translate}} &amp; {{"Canada" | translate}}</div>
+			        	</div>
+			        </div>
+			        <div class="travel-destination-wrap" ng-click="travelTakaful.CoverageType = '04'" ng-if="travelTakaful.for == 'individual' || !travelTakaful.for" ng-class="{'active' : travelTakaful.CoverageType == '04'}">
+			        	<div class="row">
+			        		<div class="col col-40"><img src="./img/schengen.png" alt=""></div>
+			        		<div class="col col-60 home-heading">{{"SCHENGEN" | translate}}</div>
+			        	</div>
+			        </div>
+			        <div class="travel-destination-wrap" ng-click="travelTakaful.CoverageType = '03'" ng-if="travelTakaful.for == 'family' || !travelTakaful.for" ng-class="{'active' : travelTakaful.CoverageType == '03'}">
+			        	<div class="row">
+			        		<div class="col col-40"><img src="./img/family-world.png" alt=""></div>
+			        		<div class="col col-60 home-heading">{{"WORLDWIDE for Family (Restricted Benefits / Cover)" | translate}}</div>
+			        	</div>
+			        </div>
+		        </div>
+		        <div class="select-option">{{"SELECT ABOVE OPTION" | translate}}</div>
+			</div>
+
+	
+			<!-- <form action=""> -->
+			<div class="travel-days">
+				<div class="row">
+					<div class="col col-50">
+						<div class="input-group login trip-days">
+							<div class="dummy-clicker" ng-click="common.callDatePicker('travelTakaful.DOB', '', vm.yesterday)"></div>
+							<label for="">{{"DOB" | translate}}</label>
+							<input type="date" name="DOB" class="text-input shadow styled-disabled" ng-model="travelTakaful.DOB"  ng-change="vm.calculateAge()" max="{{vm.yesterday}}" disabled>
+						</div>		
+					</div>
+					<div class="col col-50">
+						<div class="input-group login trip-days">
+							<label for="">{{"Trip Days" | translate}}</label>
+							<select type="text" name="TripDays" class="text-input margin-bottom shadow" ng-model="travelTakaful.TripDays" ng-class="{ 'warning' : vm.travel.formName.TripDays.$invalid && loginClicked }" required>
+								<option value="" selected disabled>{{"Select" | translate}}</option>
+								<option value="7">7</option>
+								<option value="14">14</option>
+								<option value="21">21</option>
+								<option value="30">30</option>
+								<option value="45">45</option>
+								<option value="60">60</option>
+								<option value="90">90</option>
+								<option value="120">120</option>
+								<option value="150">150</option>
+								<option value="180">180</option>
+								<option value="360">Annual</option>
+							</select>
+						</div>		
+					</div>
+				</div>
+			<!-- </form> -->
+				<h2>{{"ADDITIONAL COVERAGE" | translate}}</h2>
+				<div class="shadow wrap-coverage">
+			        <label class="travel-coverage" ng-class="{'selected' : travelTakaful.WinterSports}" for="WinterSports">
+			        	<input type="checkbox" name="WinterSports" id="WinterSports" class="hidden-checkbox" ng-model="travelTakaful.WinterSports">
+			        	<div class="custom-checkbox"></div>
+			        	<span>{{"Winter Sports Extension" | translate}}</span>
+			        </label>
+			        <label class="travel-coverage" ng-class="{'selected' : travelTakaful.WaterSports}" for="WaterSports">
+			        	<input type="checkbox" name="WaterSports" id="WaterSports" class="hidden-checkbox" ng-model="travelTakaful.WaterSports">
+			        	<div class="custom-checkbox"></div>
+			        	<span>{{"Water Sports Extension" | translate}}</span>
+			        </label>
+			        <label class="travel-coverage" for="Terrorism" ng-class="{'selected' : travelTakaful.Terrorism}">
+			        	<input type="checkbox" name="Terrorism" id="Terrorism" class="hidden-checkbox" ng-model="travelTakaful.Terrorism"> 
+			        	<div class="custom-checkbox"></div>
+			        	<span>{{"Terrorism Extension" | translate}}</span>
+			        </label>
+				</div><!-- .shadow -->
+			</div>
+
+			<div class="text-center travel-days-proceed">
+				<div class="form-error" ng-if="vm.formError" ng-bind-html="vm.formError"></div>
+				<div class="form-response" ng-if="vm.formResponse">{{vm.formResponse}}</div>
+				<button type="button" class="btn-default" ng-click="vm.travelCalculate();" ng-disabled="vm.actionDisabled">{{"Get Quote" | translate}}</button>
+			</div>
+
+
+        </div><!-- .max-300 -->
+    </ion-content>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+</ion-view>

@@ -1,0 +1,57 @@
+<ion-view hide-nav-bar="true" class="page-home travel-summary bg">
+	<common-header show-options="true" show-steps="true" start="1" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+    <ion-content class="travel-content has-header" scroll="true">
+    	<h2>{{"Motor Premium Summary" | translate}}</h2>
+    	<div class="color-container summary-page">
+    		<!-- <div class="max-300 no-padding"> -->
+		      	<div class="travel-response-data">
+		      		<div class="response-head row motor-summary-head">
+						<div class="col col-33 col-center">
+							<!-- <b>{{"Benifit" | translate}}</b> -->
+						</div>
+						<div class="col col-33 no-padding text-center"><b>{{"Comprehensive" | translate}}</b></div>
+						<div class="col col-33 no-padding text-center"><b>{{"Third Party" | translate}}</b></div>
+					</div>
+					<div class="response-item row" ng-repeat="(key, value) in vm.motorResponse.Data" ng-class="{'premium' : $last}">
+						<div class="col col-33 no-padding text-label col-center"ng-bind-html="key"></div>
+						<div class="col col-33 no-padding text-center response-item-value"ng-bind-html="value.Comprehensive"></div>
+						<div class="col col-33 no-padding text-center response-item-value" ng-bind-html="value.Compulsary"></div>
+					</div>
+
+					<div class="row" ng-if="vm.motorResponse.Note">
+						<div class="col">
+							<div>
+ 								<b>{{"Note" | translate}}</b>
+							</div>
+							<p ng-bind-html="vm.motorResponse.Note"></p>
+						</div>
+					</div>
+		
+
+					<!-- <div class="response-item row">
+						<div class="col col-33 no-padding text-label col-center"></div>
+						<div class="col col-33 no-padding text-center response-item-value"></div>
+						<div class="col col-33 no-padding text-center response-item-value"></div>
+					</div>
+					<div class="response-item row premium">
+						<div class="col col-33 no-padding text-label col-center">{{"Premium" | translate}}</div>
+						<div class="col col-33 no-padding text-center response-item-value">{{vm.motorResponse.Data.Comprehensive.Premium}}</div>
+						<div class="col col-33 no-padding text-center response-item-value">{{vm.motorResponse.Data.Compulsary.Premium}}</div>
+					</div> -->
+
+					<div class="response-item row">
+						<div class="col col-33 no-padding">
+							<button type="button" class="btn-default" ng-click="vm.goBack();">{{"Back" | translate}}</button>
+						</div>
+						<div class="col col-33 no-padding text-center response-item-value">
+							<button type="button" class="btn-default" ng-click="vm.selectPremium('Comprehensive')" ng-if="vm.motorResponse.valid.Comprehensive === 'Y'">{{"Select" | translate}}</button>
+						</div>
+						<div class="col col-33 no-padding text-center response-item-value">
+							<button type="button" class="btn-default" ng-click="vm.selectPremium('Compulsary')" ng-if="vm.motorResponse.valid.Compulsary === 'Y'">{{"Select" | translate}}</button>
+						</div>
+					</div>
+				</div>
+			<!-- </div> -->
+		</div>
+   </ion-content>
+</ion-view>

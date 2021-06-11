@@ -1,0 +1,34 @@
+<ion-view hide-nav-bar="true" class="page-login" cache-view="false">
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="login-content" scroll="true">
+		<div class="btn-language" ng-click="common.changeLanguage()">
+            <span>{{ "traslateBtnTxt" | translate}}</span>
+        </div>
+		<form action="" name="vm.login.formName" class="form" ng-submit="vm.loginUser($event)" novalidate>
+			<div class="form-inner">
+				<img class="login-logo" src="./img/logo-square.png" alt="">
+				<div class="input-group login">
+					<input placeholder="{{'Email' | translate}}" name="email" type="email" class="text-input margin-bottom" ng-model="vm.login.email" ng-class="{ 'warning' : vm.login.formName.email.$invalid && loginClicked }" required>
+				</div>
+				<div class="input-group login">
+					<input name="password" placeholder="{{'Password' | translate}}" type="password" class="text-input margin-bottom" ng-model="vm.login.password" ng-class="{ 'warning' : vm.login.formName.password.$invalid && loginClicked }" required>
+				</div>
+				<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+				<div class="form-response" ng-if="vm.formResponse">{{vm.formResponse}}</div>
+					<button type="submit" class="btn-default login shadow" ng-click="loginClicked=true" ng-disabled="vm.actionDisabled">{{"Login" | translate}}</button>
+					<button type="button" class="btn-default line" ng-click="vm.forgotPassword()">
+						{{"Forgot Pasword" | translate}}
+					</button>
+					<button type="button" class="btn-default line" ng-click="vm.goTo('register')">
+						{{"Register" | translate}}
+					</button>
+					<button type="button" class="btn-default line" ng-click="vm.goTo('guest')">
+						{{"Guest User" | translate}}
+					</button>
+				<!-- <div class="remember-me"><input id="remember" type="checkbox" ng-model="vm.login.remember"><label for="remember">{{"Remember me" | translate}}</label></div> -->
+			</div>
+		</form>
+        <!-- <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div> -->
+		<div class="login-header"></div>
+    </ion-content>
+</ion-view>

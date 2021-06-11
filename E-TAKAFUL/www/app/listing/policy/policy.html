@@ -1,0 +1,26 @@
+<ion-view hide-nav-bar="true" class="helper-intro bg" cache-view="false">
+    <common-header show-options="true" show-steps="false" show-back="true" services="common" logo-link="menu"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+
+    <ion-content class="travel-content has-header" scroll="false">
+    	<div class="max-270">
+			<div class="wrap-register-title">
+				<h2>{{"Motor Takaful" | translate}}</h2>
+			</div>
+			<div class="wrap-register-title">
+				<img class="register-icon" src="./img/motor-takaful.png" alt="">
+			</div>
+			<div class="buttons-wrap">
+				<div class="row">
+					<div class="col col-50 text-center">
+						<button type="button" class="btn-default">{{"Brochure"| translate}}</button>
+					</div>
+					<div class="col col-50 text-center">
+						<button type="button" class="btn-default" ng-click="vm.goTo('motor-calculate')">{{"Buy Now" | translate}}</button>
+					</div>
+				</div>
+			</div>
+	        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    	</div>
+    </ion-content>
+</ion-view>

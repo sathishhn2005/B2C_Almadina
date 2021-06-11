@@ -1,0 +1,103 @@
+<ion-view hide-nav-bar="true" class="page-travel bg">
+	<common-header show-options="true" show-steps="true" start="1" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="has-header" scroll="true">
+		<div class="wrap-register-title">
+			<img class="register-icon small" src="./img/domestic-takaful.png" alt="">
+		</div>
+		<form action="" name="forms.helperTakaful.calculateForm" class="login-form form" ng-submit="vm.helperTakafulCalculate($event)" novalidate>
+			<div class="form-inner">
+				<div class="row no-padding wrap-dob">
+					<div class="col">
+						<div class="input-group login">
+							<label for="">{{"Assured Name" | translate}}</label>
+							<input name="AssurName" type="text" class="text-input" ng-model="helperTakaful.AssurName" ng-class="{ 'warning' : forms.helperTakaful.calculateForm.AssurName.$invalid && helperCalculateClicked }" required pattern="([^\s][A-zÀ-ž\s]+)">
+						</div>	
+					</div><!-- .col --> 
+				</div>
+				<div class="row no-padding wrap-dob">
+					<div class="col col-50">
+						<div class="input-group login">
+							<div class="dummy-clicker" ng-click="common.callDatePicker('helperTakaful.DOB', helperTakaful.minDOB, helperTakaful.maxDOB)"></div>
+							<label for="">{{"DOB" | translate}}</label>
+							<input type="date" name="DOB" class="text-input styled-disabled" ng-model="helperTakaful.DOB" ng-class="{ 'warning' : forms.helperTakaful.calculateForm.DOB.$invalid && helperCalculateClicked }" required ng-change="vm.calculateAge()" min="{{helperTakaful.minDOB}}" max="{{helperTakaful.maxDOB}}" disabled="true">
+						</div><!-- .input-group -->
+					</div><!-- .col -->
+					<div class="col col-50">
+						<div class="input-group login">
+							<label for="">{{"Gender" | translate}}</label>
+							<select name="Gender" class="text-input select" ng-model="helperTakaful.Gender" ng-class="{ 'warning' : forms.helperTakaful.calculateForm.Gender.$invalid && helperCalculateClicked }" required>
+								<option value="" selected disabled>{{"Select" | translate}}</option>
+								<option value="M">{{"Male" | translate}}</option>
+								<option value="F">{{"Female" | translate}}</option>
+							</select>
+						</div><!-- .input-group -->
+					</div><!-- .col -->
+				</div><!-- .row -->
+				<div class="row no-padding wrap-dob">
+					<div class="col col-50">
+						<div class="input-group login trip-days">
+							<label for="">{{"Occupation" | translate}}</label>
+							<select type="text" name="Occupation" class="text-input shadow" ng-model="helperTakaful.Occupation" ng-class="{ 'warning' : forms.helperTakaful.calculateForm.Occupation.$invalid && helperCalculateClicked }" required>
+								<option value="" selected disabled>{{"Select" | translate}}</option>
+								<option value="160">{{"Housemaid" | translate}}</option>
+								<option value="161">{{"House Driver" | translate}}</option>
+								<option value="163">{{"Gardner" | translate}}</option>
+							</select>
+						</div><!-- .input-group -->
+					</div><!-- .col -->
+					<div class="col col-50">
+						<div class="input-group login">
+							<label>{{"Mobile (Sponsor)" | translate}}</label>
+							<input name="SpoMobile" type="number" pattern="\d*" class="text-input" ng-model="helperTakaful.SpoMobile" ng-class="{ 'warning' : forms.helperTakaful.calculateForm.SpoMobile.$invalid && helperCalculateClicked }" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" minlength="8" required>
+						</div><!-- .input-group -->
+					</div>
+				</div><!-- .row -->
+				
+
+				<div class="row no-padding wrap-dob">
+					<div class="col">
+						<div class="input-group login">
+							<label>{{"Email (Sponsor)" | translate}}</label>
+							<input name="SpoEmail" type="email" class="text-input" ng-model="helperTakaful.SpoEmail" ng-class="{ 'warning' : forms.helperTakaful.calculateForm.SpoEmail.$invalid && helperCalculateClicked }" required>
+						</div><!-- .input-group -->
+					</div>
+				</div>
+				<!-- <div class="row no-padding wrap-dob">
+					<div class="col col-50">
+						<div class="input-group login">
+							<label>{{"Email" | translate}}</label>
+							<input name="Email" type="email" class="text-input margin-bottom" ng-model="helperTakaful.Email" ng-class="{ 'warning' : forms.helperTakaful.calculateForm.Email.$invalid && helperCalculateClicked }" required>
+						</div>
+					</div>
+					
+				</div> -->
+
+				<div class="wrap-btns text-center">
+					<button type="submit" class="btn-default" ng-click="helperCalculateClicked=true" ng-disabled="vm.actionDisabled">{{"Get Premium" | translate}}</button>
+				</div><!-- .wrap-btns -->
+				<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+				
+				<div class="wrap-premium helper">
+					<div class="row no-padding margin-bottom">
+						<div class="col col-50 no-padding col-center ta-left" ng-if="helperTakaful.calculateData['Net Premium to Customer']">{{"Total Premium" | translate}}: </div>
+						<div class="col col-50 col-center premium-amount ta-left no-padding">{{helperTakaful.calculateData['Net Premium to Customer']}}</div>
+					</div>
+					<!-- <h2 ng-if="helperTakaful.calculateData['Net Premium to Customer']">{{"Disclaimer" | translate}}</h2> -->
+					<!-- <p ng-if="helperTakaful.calculateData['Net Premium to Customer']">{{"Helper Calculate Disclaimer" | translate}}</p> -->
+				</div>
+				<div class="wrap-btns text-center">
+					<button type="button" class="btn-default min-width-100" ng-click="vm.goBack()">{{"Back" | translate}}</button>
+					<button type="button" class="btn-default min-width-100" ng-click="vm.goTo('helper-sponsor')" ng-if="helperTakaful.calculateData['Net Premium to Customer']" ng-disabled="vm.actionDisabled">{{"Next" | translate}}</button>
+				</div><!-- .wrap-btns -->
+
+				
+
+				
+
+			</div><!-- .form-inner -->
+		</form>
+		<div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    	<!-- </div> -->
+    </ion-content>
+</ion-view>

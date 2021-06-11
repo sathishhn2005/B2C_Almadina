@@ -1,0 +1,41 @@
+<ion-view hide-nav-bar="true" class="travel-response renew bg">
+    <common-header show-options="true" show-steps="false" show-back="true" services="common" logo-link="menu"></common-header>
+    <ion-content class="travel-content save-travel-content has-header" scroll="true" ng-class="{'touch-disabled' : vm.actionDisabled}">
+    	<div class="color-container">
+    		<div class="max-300">
+    			<div class="response-title">{{"Renew" | translate}}</div>
+		      	<div class="travel-response-data">
+					<div ng-repeat="(item, value) in renew.Data.Data">
+						<h3>{{item}}</h3>
+						<div class="response-item" ng-repeat="(subItem, itemValue) in value" ng-if="vm.ifArray(value) == false">
+							<!-- <div>{{subItem}}</div> -->
+							<div ng-if="vm.ifArray(value) == false" class="row no-padding">
+								<div class="col col-50">{{subItem}}</div>
+								<div class="response-item-value col col-50"><b>{{itemValue}}</b></div>
+							</div><!-- .row -->
+						</div><!-- .response-item -->
+					</div>
+					<br>
+						<div class="row no-padding wrap-dob">
+							<div class="input-group login col">
+								<h3 for="">{{"Select Payment Mode" | translate}}</h3>
+								<div class="text-left">
+									<input type="radio" name="renewPaymentMode" id="renewPaymentModeC" ng-model="renew.paymentMode" value="credit" ng-change="vm.setrenewPaymentMode()">
+									<label for="renewPaymentModeC">{{"International cards/ credit cards" | translate}} </label>
+									<div></div>
+									<input type="radio" name="renewPaymentMode" id="renewPaymentModeD" ng-model="renew.paymentMode" value="debit" ng-change="vm.setrenewPaymentMode()">
+									<label for="renewPaymentModeD">{{"Oman debit Cards" | translate}} </label>
+								</div>
+							</div><!-- .input-group -->
+						</div>
+					<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+					<div class="wrap-btns text-center">
+						<button type="button" class="btn-default min-width-100" ng-click="vm.goBack();">{{"Back" | translate}}</button>
+						<button type="button" class="btn-default min-width-100 cancel" ng-if="renew.Data.Data" ng-click="vm.makePayment()" ng-disabled="vm.actionDisabled">{{"Renew" | translate}}</button>
+					</div><!-- .wrap-btns -->
+				</div><!-- .travel-response-data -->
+			</div><!-- .max-300 -->
+		</div><!-- .color-container -->
+   </ion-content>
+   <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+  </ion-view>

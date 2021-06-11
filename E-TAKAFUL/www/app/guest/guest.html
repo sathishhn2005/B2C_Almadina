@@ -1,0 +1,37 @@
+<ion-view hide-nav-bar="true" class="page-register bg" cache-view="false">
+	<common-header show-options="false" show-steps="false" show-back="true" services="common" logo-link="login"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="register-content has-header" scroll="true">
+    	<div class="wrap-register-title">
+			<img class="register-icon" src="./img/guest-login.png" alt="">
+			<h2>{{"Guest Log-In" | translate}}</h2>
+		</div>
+		<form action="" name="vm.guest.guestForm" class="login-form form" ng-submit="vm.guestUser($event)" novalidate>
+			<div class="form-inner">
+				<div class="input-group login">
+					<label for="">{{"Full Name" | translate}}</label>
+					<input type="text" name="fullname" class="text-input margin-bottom" ng-model="vm.guest.full_name"  ng-class="{ 'warning' : vm.guest.guestForm.fullname.$invalid && guestLoginClicked }" required pattern="([^\s][A-zÀ-ž\s]+)">
+				</div>
+				<div class="input-group login">
+					<label>{{"Email" | translate}}</label>
+					<input name="email" type="email" class="text-input margin-bottom" ng-model="vm.guest.email" ng-class="{ 'warning' : vm.guest.guestForm.email.$invalid && guestLoginClicked }" required>
+				</div>
+				<div class="input-group login">
+					<label for="">{{"Phone Number" | translate}}</label>
+					<input type="number" pattern="\d*" name="phone" class="text-input margin-bottom" ng-model="vm.guest.phone" ng-class="{ 'warning' : vm.guest.guestForm.phone.$invalid && guestLoginClicked }" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" minlength="8">
+				</div>
+				<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+				<div class="form-response" ng-if="vm.formResponse">{{vm.formResponse}}</div>
+				<div class="wrap-btns">
+					<button type="submit" class="btn-default" ng-click="guestLoginClicked=true" ng-disabled="vm.actionDisabled">{{"Login" | translate}}</button>
+				</div>
+				<div class="disclaimer text-left">
+					<h3>{{"Disclaimer" | translate}}</h3>
+					<p>{{"Disclaimer Register 1" | translate}}</p>
+					<p>{{"Disclaimer Register 2" | translate}}</p>
+				</div>
+			</div>
+		</form>
+        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,22 @@
+<ion-header-bar class="bar-light bar bar-header custom-header" title="Details">
+    <div class="header-start text-left" ng-click="goBack()">
+        <img class="icon-back" src="./img/left-arrow.png" width="16" alt="etakaful" ng-if="showBack.toUpperCase() == 'TRUE'">
+    </div>
+    <div class="header-middle">
+        <div class="logo" ng-click="goTo()"></div>
+    </div>
+    <div class="header-end text-right">
+        <div class="btn-profile" ng-if="showOptions.toUpperCase() == 'TRUE'" ng-click="services.showOptions()">
+            <img src="./img/default-user.png" width="32" alt="etakaful">
+        </div>
+        <div class="wrap-step" ng-if="showSteps.toUpperCase() == 'TRUE'">
+            {{"step" | translate}} <span>{{start}}</span> {{"of" | translate}} {{end}}
+        </div>
+        <div class="btn-language" ng-if="language.toUpperCase() == 'TRUE'" ng-click="services.changeLanguage()">
+            <span>{{$parent.rtl ? "English" : "Arabic"}}</span>
+        </div>
+    </div>
+    <div class="show-premium" ng-if="premium">
+		<span>{{"Total Premium" | translate}}:</span> {{premium}}
+    </div>
+</ion-header-bar>

@@ -1,0 +1,76 @@
+<ion-view hide-nav-bar="true" class="helper-intro bg" cache-view="false">
+    <common-header show-options="true" show-steps="false" show-back="true" services="common" logo-link="menu"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+
+    <ion-content class="travel-content has-header" ng-class="{'touch-disabled' : vm.actionDisabled}">
+    	<div class="max-270">
+    		<div class="wrap-register-title">
+				<h2>{{"Policy List" | translate}}</h2>
+			</div>
+    		<ion-list class="policy-list">
+    			<ion-item ng-repeat="(key, value) in policy.List" class="policy-list-item shadow">
+    				<div class="policy-item-overview">
+						<div class="policy-item-title" ng-class="{'motor': value.CLASSCODE == '25', 'domestic': value.CLASSCODE == '33', 'travel': value.CLASSCODE == '22'}">
+	    					<div class="policy-item-label">
+	    						<span class="policy-item-text">{{ "Policy Number" | translate}}</span>{{value.POLICYNO}}
+	    					</div>	
+	    				</div><!-- .policy-item-title -->
+	    				<div class="row no-padding">
+	    					<div class="col col-30 text-center">
+	    						<div class="policy-item-label">{{ "Start Date" | translate}}</div>
+	    						<div class="policy-item-date">
+									<div class="policy-item-day">{{vm.dates[$index]['start_date']['day']}}</div>
+									<div>{{vm.dates[$index]['start_date']['month']}}</div>
+									<div>{{vm.dates[$index]['start_date']['year']}}</div>
+									<!-- {{vm.dateFormat(value.POLICYSTARTDATE)}} -->
+								</div>
+	    					</div><!-- .col -->
+	    					<div class="col col-30 text-center">
+	    						<div class="policy-item-label">{{ "End Date" | translate}}</div>
+	    						<div class="policy-item-date">
+									<div class="policy-item-day">{{vm.dates[$index]['end_date']['day']}}</div>
+									<div>{{vm.dates[$index]['end_date']['month']}}</div>
+									<div>{{vm.dates[$index]['end_date']['year']}}</div>
+									<!-- {{vm.dateFormat(value.POLICYENDDATE)}} -->
+								</div>
+	    					</div><!-- .col -->
+	    					<div class="col col-40 text-center">
+	    						<div class="policy-item-label">{{ "Premium Amount" | translate}}</div>
+	    						<div class="policy-item-date">
+									<div class="policy-item-day">{{value.POLICYNETPREM}}</div>
+									<div>{{"OMR" | translate}}</div>
+								</div>
+	    					</div><!-- .col -->
+	    				</div><!-- .row -->
+	    				<div class="wrap-list-buttons text-right">
+	    					<button type="button" class="btn-list" ng-click="vm.viewPolicy($index)">
+                                <span ng-if="selectedPolicy == $index">
+                                    {{"Hide" | translate}}  
+                                </span>
+                                <span ng-if="selectedPolicy != $index">
+                                    {{"View" | translate}}  
+                                </span>
+                            </button>
+	    					<button type="button" class="btn-list renew" ng-click="vm.renewPolicy($index)" ng-if="value.CLASSNAME == 'MOTOR' && value.ShowRenew">{{"Renew" | translate}}</button>
+	    					<!-- <button type="button" class="btn-list intimate" ng-click="vm.intimateClaim($index)" ng-if="value.CLASSNAME == 'MOTOR'">{{"Intimate" | translate}}</button> -->
+	    				</div><!-- .wrap-list-buttons -->
+	    			</div><!-- .policy-item-overview -->
+    				<div class="policy-item-detail" ng-if="selectedPolicy == $index">
+    					<div class="row" ng-repeat="(key, value) in policy.Detail[$index]">
+    						<div class="col col-40">
+    							<div class="policy-item-label">{{key}}</div>
+    						</div><!-- .col -->
+    						<div class="col col-60">
+    							<div class="policy-item-text">{{value}}</div>
+    						</div><!-- .col -->
+    					</div><!-- .row -->
+    				</div><!-- .policy-item-detail -->
+    			</ion-item>
+    		</ion-list>
+    		<div class="wrap-btns text-center policy">
+    			<button type="button" class="btn-default min-width-100" ng-click="vm.goBack()">{{"Back" | translate}}</button>
+    		</div>
+    	</div><!-- .max-270 -->
+    </ion-content>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+</ion-view>

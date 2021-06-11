@@ -1,0 +1,54 @@
+<ion-view hide-nav-bar="true" class="page-menu bg">
+    <common-header show-options="true" show-steps="false" show-back="false" services="common" logo-link="menu"></common-header>
+    <ion-content class="menu-content has-header" scroll="true">
+    	<h2 class="page-menu-title">{{"Main Menu" | translate}}</h2>
+	
+		<ul class="menu-list">
+			<li class="menu-item menu-products" ng-click="vm.goTo('products');">
+				<div class="wrap-icon">
+					<img src="./img/products.png">
+				</div>
+				<span>{{"Our Products" | translate}}</span>
+			</li>
+			<li class="menu-item menu-care" ng-click="vm.goTo('policy-list');" ng-if="!user.guest">
+				<div class="wrap-icon">
+					<img src="./img/policy.png">
+				</div>
+				<span>{{"My Policy" | translate}}</span>
+			</li>
+			<li class="menu-item menu-alert" ng-click="vm.goTo('motor-claims');" ng-if="!user.guest">
+				<div class="wrap-icon">
+					<img src="./img/claim.png">
+				</div>
+				<span>{{"My Claims" | translate}}</span>
+			</li>
+			<!-- <li class="menu-item menu-care">
+				<div class="wrap-icon">
+					<img src="./img/customer-care.png">
+				</div>
+				<span>Customer Care</span>
+			</li>
+			<li class="menu-item menu-alert">
+				<div class="wrap-icon">
+					<img src="./img/alert.png">
+				</div>
+				<span>Alert</span>
+			</li> -->
+			<li class="menu-item menu-contact" ng-click="vm.goTo('contact');">
+				<div class="wrap-icon">
+					<img src="./img/contact-us.png">
+				</div>
+				<span>{{"Contact Us" | translate}}</span>
+			</li>
+			<li class="menu-item menu-guide" ng-click="vm.goTo('takaful-guide');">
+				<div class="wrap-icon">
+					<img src="./img/takaful-guide.png">
+				</div>
+				<span>{{"Takaful Guide" | translate}}</span>
+			</li>
+		</ul>
+
+
+    	<div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,93 @@
+<ion-view hide-nav-bar="true" class="bg" cache-view="false">
+    <common-header show-options="true" show-steps="true" start="3" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="travel-content has-header" scroll="true">
+    	<div class="max-270">
+			<div class="wrap-register-title">
+				<h2>{{"Declaration of Good Health" | translate}}</h2>
+			</div>
+		</div>
+			<form action="" name="forms.helperTakaful.declarationForm" class="login-form form" ng-submit="vm.helperTakafulSponsor()" novalidate>
+				<div class="form-inner declaration">
+					<h3>{{"Health Statement" | translate}}</h3>
+					<h4>{{"I hereby declare and certify that" | translate}}</h4>
+					<label class="row no-padding declaration" for="health-declaration-1">
+						<div class="col col-10">
+							<input type="checkbox" name="health-declaration-1" id="health-declaration-1" class="hidden-checkbox" required ng-model="helperTakaful.declaration.declaration1">
+							<div class="custom-checkbox"></div>
+						</div><!-- .col -->
+						<div class="col col-90">
+							<div class="additional-coverage-title">
+								{{"Helper Declaration 1" | translate}}
+							</div>
+						</div><!-- .col -->
+					</label><!-- .row -->
+					<label class="row no-padding declaration" for="health-declaration-2">
+						<div class="col col-10">
+							<input type="checkbox" name="health-declaration-2" id="health-declaration-2" class="hidden-checkbox" required ng-model="helperTakaful.declaration.declaration2">
+							<div class="custom-checkbox"></div>
+						</div><!-- .col -->
+						<div class="col col-90">
+							<div class="additional-coverage-title">
+								{{"Helper Declaration 2" | translate}}
+							</div>
+						</div><!-- .col -->
+					</label><!-- .row -->
+					<label class="row no-padding declaration" for="health-declaration-3">
+						<div class="col col-10">
+							<input type="checkbox" name="health-declaration-3" id="health-declaration-3" class="hidden-checkbox" required ng-model="helperTakaful.declaration.declaration3">
+							<div class="custom-checkbox"></div>
+						</div><!-- .col -->
+						<div class="col col-90">
+							<div class="additional-coverage-title">
+								{{"Helper Declaration 3" | translate}}
+							</div>
+						</div><!-- .col -->
+					</label><!-- .row -->
+					<label class="row no-padding declaration" for="health-declaration-4">
+						<div class="col col-10">
+							<input type="checkbox" name="health-declaration-4" id="health-declaration-4" class="hidden-checkbox" required ng-model="helperTakaful.declaration.declaration4">
+							<div class="custom-checkbox"></div>
+						</div><!-- .col -->
+						<div class="col col-90">
+							<div class="additional-coverage-title">
+								{{"Helper Declaration 4" | translate}}
+							</div>
+						</div><!-- .col -->
+					</label><!-- .row -->
+					<label class="row no-padding declaration" name="health-declaration-5">
+						<div class="col col-10">
+							<input type="checkbox" id="health-declaration-5" class="hidden-checkbox" required ng-model="helperTakaful.declaration.declaration5">
+							<div class="custom-checkbox"></div>
+						</div><!-- .col -->
+						<div class="col col-90">
+							<div for="health-declaration-5" class="additional-coverage-title">
+								{{"Helper Declaration 5" | translate}}
+							</div>
+						</div><!-- .col -->
+					</label><!-- .row -->
+					<label class="row no-padding declaration" for="health-declaration-6">
+						<div class="col col-10">
+							<input type="checkbox" name="health-declaration-6" id="health-declaration-6" class="hidden-checkbox" required ng-model="helperTakaful.declaration.declaration6">
+							<div class="custom-checkbox"></div>
+						</div><!-- .col -->
+						<div class="col col-90">
+							<div class="additional-coverage-title">
+								{{"Helper Declaration 6" | translate}}
+							</div>
+						</div><!-- .col -->
+					</label><!-- .row -->
+					<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+					<div class="wrap-btns text-center">
+						<button type="button" class="btn-default min-width-100" ng-click="vm.goBack()">{{"Back" | translate}}</button>
+						<button type="button" class="btn-default min-width-100" ng-click="vm.helperTakafulSponsor()" ng-disabled="vm.actionDisabled">{{"Next" | translate}}</button>
+					</div><!-- .wrap-btns -->
+				</div><!-- .form-inner -->
+			</form>
+	        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    </ion-content>
+</ion-view>
+
+
+
+

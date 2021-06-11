@@ -1,0 +1,6 @@
+<ion-popover-view>
+    <ul class="options-list">
+        <li ng-click="common.goTo('profile');" ng-if="!user.guest">{{"Profile" | translate}}</li>
+        <li ng-click="common.logout();">{{"Logout" | translate}}</li>
+    </ul>
+</ion-popover-view>

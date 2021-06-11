@@ -1,0 +1,52 @@
+<ion-view hide-nav-bar="true" class="page-travel-save bg">
+    <common-header show-options="true" show-steps="true" start="2" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="has-header travel-content" scroll="true" ng-class="{'touch-disabled' : vm.actionDisabled}">
+        <!-- <div class="max-270"> -->
+			<div class="wrap-register-title">
+				<img class="register-icon small" src="./img/motor-takaful.png" alt="">
+				<!-- <h2>Save Travel</h2> -->
+			</div>
+			<form name="forms.motorTakaful.photoForm" class="login-form form helper-sponsor-form motor-docs-form" ng-submit="vm.submitPhotoForm($event)" novalidate>
+				<div class="form-inner">
+
+					<h3>{{"Upload Documents" | translate}}
+						
+					</h3>
+					<div class="input-group login">
+						<label for="">{{"NCB Certificate" | translate}}</label>
+						<!-- <input type="file" accept=".jpg,.png,.jpeg,.pdf" name="MrtaForm" class="text-input ng-hide" fileread="claim.MrtaForm" ng-class="{ 'warning' : forms.claim.claimDocumentsForm.MrtaForm.$invalid && claimDocumentsSubmit }" required> -->
+						
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="NCBCertificate" class="text-input ng-hide" fileread="motorTakaful.NCBCertificate" ng-model="motorTakaful.NCBCertificate">
+						<div class="btn-file" ng-class="{'selected': motorTakaful.NCBCertificate, 'warning' : forms.motorTakaful.photoForm.NCBCertificate.$invalid && motorDocumentsClicked}" ng-click="vm.selectFile($event)" data-input="NCBCertificate"></div>
+					</div><!-- .input-group -->
+					<div class="input-group login">
+						<label for="">{{"Driver License Copy" | translate}} &#42;</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="DriverLicence" class="text-input ng-hide" fileread="motorTakaful.DriverLicence" ng-model="motorTakaful.DriverLicence" required>
+						<div class="btn-file" ng-class="{'selected': motorTakaful.DriverLicence, 'warning' : forms.motorTakaful.photoForm.DriverLicence.$invalid && motorDocumentsClicked}" ng-click="vm.selectFile($event)" data-input="DriverLicence"></div>
+					</div><!-- .input-group -->
+					<div class="input-group login">
+						<label for="">{{"Mulkiya Copy" | translate}} &#42;</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="Mulkiya" class="text-input ng-hide" fileread="motorTakaful.Mulkiya" ng-model="motorTakaful.Mulkiya" required>
+						<div class="btn-file" ng-class="{'selected': motorTakaful.Mulkiya, 'warning' : forms.motorTakaful.photoForm.Mulkiya.$invalid && motorDocumentsClicked}" ng-click="vm.selectFile($event)" data-input="Mulkiya"></div>
+					</div><!-- .input-group -->
+					<div class="input-group login">
+						<label for="">{{"Others" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="Others" class="text-input ng-hide" fileread="motorTakaful.Others">
+<div class="btn-file" ng-class="{'selected': motorTakaful.Others}" ng-click="vm.selectFile($event)" data-input="Others"></div>
+					</div><!-- .input-group -->
+
+					<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+					
+					<div class="wrap-btns text-center declaration">
+						<button type="button" class="btn-default min-width-100" ng-click="vm.goBack()">{{"Back" | translate}}</button>
+						<button type="submit" class="btn-default min-width-100" ng-click="motorDocumentsClicked=true; ">{{"Next" | translate}}</button>
+					</div><!-- .wrap-btns -->
+	
+					
+				</div><!-- .form-inner -->
+			</form>
+	        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    	<!-- </div> -->
+    </ion-content>
+</ion-view>

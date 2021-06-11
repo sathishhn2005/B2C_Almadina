@@ -1,0 +1,128 @@
+<ion-view hide-nav-bar="true" class="page-travel-save bg">
+	
+	<common-header show-options="true" show-steps="true" start="2" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+	<img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="has-header" scroll="true" ng-class="{'touch-disabled' : vm.actionDisabled}">
+        <!-- <div class="max-270"> -->
+			<div class="wrap-register-title">
+				<img class="register-icon small" src="./img/motor-takaful.png" alt="">
+				<!-- <h2>Save Travel</h2> -->
+			</div>
+			<form name="forms.claim.claimDocumentsForm" class="login-form form helper-sponsor-form motor-docs-form" ng-submit="vm.intimateClaim($event)" novalidate>
+				<div class="form-inner" ng-if="vm.loadComplete">
+
+					<h3>{{"Claim Details" | translate}}</h3>
+
+					<!-- <button ng-click="vm.pickFile()" fileread="claim.Licence">Pick file</button> -->
+
+					<div class="input-group login">
+						<label for="">{{"Driver Licence Copy" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="Licence" class="text-input ng-hide" fileread="claim.Licence" ng-model="claim.Licence">
+						<div class="btn-file" ng-class="{'selected': claim.Licence, 'warning' : forms.claim.claimDocumentsForm.Licence.$invalid && claimDocumentsSubmit}" ng-click="vm.selectFile($event)" data-input="Licence"></div>
+					</div><!-- .input-group -->
+					<div class="input-group login">
+						<label for="">{{"Mulkiya Copy" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="MulkiyaForm" class="text-input ng-hide" fileread="claim.MulkiyaForm" ng-model="claim.MulkiyaForm">
+						<div class="btn-file" ng-class="{'selected': claim.MulkiyaForm, 'warning' : forms.claim.claimDocumentsForm.MulkiyaForm.$invalid && claimDocumentsSubmit}" ng-click="vm.selectFile($event)" data-input="MulkiyaForm"></div>
+					</div><!-- .input-group -->
+					<div class="input-group login">
+						<label for="">{{"MRTA Form" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="MrtaForm" class="text-input ng-hide" fileread="claim.MrtaForm" ng-model="claim.MrtaForm">
+						<div class="btn-file" ng-class="{'selected': claim.MrtaForm, 'warning' : forms.claim.claimDocumentsForm.MrtaForm.$invalid && claimDocumentsSubmit}" ng-click="vm.selectFile($event)" data-input="MrtaForm"></div>
+					</div><!-- .input-group -->
+
+					<div class="input-group login ng-hide">
+						<label for="">{{"Bonet" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="Bonet" class="text-input" fileread="claim.Bonet">
+						<label for="">{{"Window Screen" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="WindowScreen" class="text-input" fileread="claim.WindowScreen">
+						<label for="">{{"Roof" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="Roof" class="text-input" fileread="claim.Roof">
+						<label for="">{{"Window" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="Window" class="text-input" fileread="claim.Window">
+						<label for="">{{"Boot" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="Boot" class="text-input" fileread="claim.Boot">
+						<label for="">{{"Door Left Front" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="DoorLeftFront" class="text-input" fileread="claim.DoorLeftFront">
+						<label for="">{{"Door Left Back" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="DoorLeftBack" class="text-input" fileread="claim.DoorLeftBack">
+						<label for="">{{"Door Right Front" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="DoorRightFront" class="text-input" fileread="claim.DoorRightFront">
+						<label for="">{{"Door Right Back" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="DoorRightBack" class="text-input" fileread="claim.DoorRightBack">
+						<label for="">{{"Cap Left Front" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="CapLeftFront" class="text-input" fileread="claim.CapLeftFront">
+						<label for="">{{"Cap Left Back" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="CapLeftBack" class="text-input" fileread="claim.CapLeftBack">
+						<label for="">{{"Cap Right Front" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="CapRightFront" class="text-input" fileread="claim.CapRightFront">
+						<label for="">{{"Cap Right Back" | translate}}</label>
+						<input type="file" accept=".jpg,.png,.jpeg,.pdf" name="CapRightBack" class="text-input" fileread="claim.CapRightBack">
+					</div><!-- .input-group -->
+					<!-- <ion-scroll direction="x"> -->
+						<div class="wrap-car-img">
+							<img class="img-car checked" ng-if="claim.Bonet" src="./img/car/Bonnet.png">
+							<img class="img-car checked" ng-if="claim.Boot" src="./img/car/Boot.png">
+							<img class="img-car checked" ng-if="claim.CapLeftBack" src="./img/car/CapLeftBack.png">
+							<img class="img-car checked" ng-if="claim.CapLeftFront" src="./img/car/CapLeftFront.png">
+							<img class="img-car checked" ng-if="claim.CapRightFront" src="./img/car/CapRightFront.png">
+							<img class="img-car checked" ng-if="claim.CapRightBack" src="./img/car/CapRightBack.png">
+							<img class="img-car checked" ng-if="claim.DoorLeftBack" src="./img/car/DoorLeftBack.png">
+							<img class="img-car checked" ng-if="claim.DoorLeftFront" src="./img/car/DoorLeftFront.png">
+							<img class="img-car checked" ng-if="claim.DoorRightBack" src="./img/car/DoorRightBack.png">
+							<img class="img-car checked" ng-if="claim.DoorRightFront" src="./img/car/DoorRightFront.png">
+							<img class="img-car checked" ng-if="claim.Roof" src="./img/car/Roof.png">
+							<img class="img-car checked" ng-if="claim.Window" src="./img/car/Window.png">
+							<img class="img-car checked" ng-if="claim.WindowScreen" src="./img/car/WindowScreen.png">
+
+							<img class="img-car" src="./img/car/car.png" usemap="#image-map">
+						</div>
+
+						<map name="image-map">
+							<area ng-click="vm.selectFile($event)" target="" data-input="Bonet" alt="Bonet" title="Bonet" href="" coords="103,121,175,48" shape="rect">
+							<area ng-click="vm.selectFile($event)" target="" data-input="WindowScreen" alt="WindowScreen" title="WindowScreen" href="" coords="99,140,175,166" shape="rect">
+							<area ng-click="vm.selectFile($event)" target="" data-input="Roof" alt="Roof" title="Roof" href="" coords="108,177,171,299" shape="rect">
+							<area ng-click="vm.selectFile($event)" target="" data-input="Window" alt="Window" title="Window" href="" coords="102,306,176,339" shape="rect">
+							<area ng-click="vm.selectFile($event)" target="" data-input="Boot" alt="Boot" title="Boot" href="" coords="97,350,183,408" shape="rect">
+							<area ng-click="vm.selectFile($event)" target="" data-input="DoorLeftFront" alt="DoorLeftFront" title="DoorLeftFront" href="" coords="37,157,88,237" shape="rect">
+							<area ng-click="vm.selectFile($event)" target="" data-input="DoorLeftBack" alt="DoorLeftBack" title="DoorLeftBack" href="" coords="36,243,89,329" shape="rect">
+							<area ng-click="vm.selectFile($event)" target="" data-input="DoorRightFront" alt="DoorRightFront" title="DoorRightFront" href="" coords="188,158,244,235" shape="rect">
+							<area ng-click="vm.selectFile($event)" target="" data-input="DoorRightBack" alt="DoorRightBack" title="DoorRightBack" href="" coords="188,247,243,317" shape="rect">
+							<area ng-click="vm.selectFile($event)" target="" data-input="CapLeftBack" alt="CapLeftBack" title="CapLeftBack" href="" coords="31,361,28" shape="circle">
+							<area ng-click="vm.selectFile($event)" target="" data-input="CapRightFront" alt="CapRightFront" title="CapRightFront" href="" coords="245,111,26" shape="circle">
+							<area ng-click="vm.selectFile($event)" target="" data-input="CapRightBack" alt="CapRightBack" title="CapRightBack" href="" coords="247,364,27" shape="circle">
+							<area ng-click="vm.selectFile($event)" target="" data-input="CapLeftFront" alt="CapLeftFront" title="CapLeftFront" href="" coords="33,111,25" shape="circle">
+						</map>
+					<!-- </ion-scroll> -->
+					
+					<!-- <map name="image-map">
+						<area ng-click="vm.selectFile($event)" target="" alt="Roof" title="Roof" href="" coords="206,112,322,169" shape="rect">
+						<area ng-click="vm.selectFile($event)" target="" alt="Bonet" title="Bonet" href="" coords="371,96,453,179" shape="rect">
+						<area ng-click="vm.selectFile($event)" target="" alt="WindowScreen" title="WindowScreen" href="" coords="332,103,360,182" shape="rect">
+						<area ng-click="vm.selectFile($event)" target="" alt="Window" title="Window" href="" coords="165,96,195,180" shape="rect">
+						<area ng-click="vm.selectFile($event)" target="" alt="Boot" title="Boot" href="" coords="88,100,153,187" shape="rect">
+						<area ng-click="vm.selectFile($event)" target="" alt="DoorLeftFront" title="DoorLeftFront" href="" coords="265,37,343,80" shape="rect">
+						<area ng-click="vm.selectFile($event)" target="" alt="DoorLeftBack" title="DoorLeftBack" href="" coords="178,37,256,79" shape="rect">
+						<area ng-click="vm.selectFile($event)" target="" alt="DoorRightFront" title="DoorRightFront" href="" coords="264,200,344,242" shape="rect">
+						<area ng-click="vm.selectFile($event)" target="" alt="DoorRightBack" title="DoorRightBack" href="" coords="179,200,252,243" shape="rect">
+						<area ng-click="vm.selectFile($event)" target="" alt="CapLeftFront" title="CapLeftFront" href="" coords="391,28,29" shape="circle">
+						<area ng-click="vm.selectFile($event)" target="" alt="CapLeftBack" title="CapLeftBack" href="" coords="137,31,28" shape="circle">
+						<area ng-click="vm.selectFile($event)" target="" alt="CapRightFront" title="CapRightFront" href="" coords="389,242,28" shape="circle">
+						<area ng-click="vm.selectFile($event)" target="" alt="CapRightBack" title="CapRightBack" href="" coords="137,243,27" shape="circle">
+					</map> -->
+
+
+
+					<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+					
+					<div class="wrap-btns text-center declaration">
+						<button type="button" class="btn-default min-width-100" ng-click="vm.goBack()">{{"Back" | translate}}</button>
+						<button type="submit" class="btn-default min-width-100" ng-click="claimDocumentsSubmit=true" ng-disabled="vm.actionDisabled">{{"Next" | translate}}</button>
+					</div><!-- .wrap-btns -->
+					
+				</div><!-- .form-inner -->
+			</form>
+	        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    	<!-- </div> -->
+	</ion-content>
+</ion-view>

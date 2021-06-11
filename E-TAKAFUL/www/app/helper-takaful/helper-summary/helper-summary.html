@@ -1,0 +1,81 @@
+<ion-view hide-nav-bar="true" class="travel-response bg">
+    <common-header show-options="true" show-steps="true" start="3" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+    <ion-content class="travel-content save-travel-content has-header" scroll="true">
+    	<div class="color-container">
+    		<div class="max-300 no-padding">
+    			<div class="response-title">{{"Domestic Helper Premium Summary" | translate}}</div>
+		      	<div class="travel-response-data">
+						<div ng-repeat="(item, value) in helperTakaful.saveData">
+							<h3>{{item}}</h3>
+							<div class="response-item" ng-repeat="(subItem, itemValue) in value" ng-if="vm.ifArray(value) == false">
+								<!-- <div>{{subItem}}</div> -->
+								<div ng-if="vm.ifArray(value) == false" class="row no-padding">
+									<div class="col col-50">{{subItem}}</div>
+									<div class="response-item-value col col-50"><b>{{itemValue}}</b></div>
+								</div><!-- .row -->
+							</div><!-- .response-item -->
+							<div ng-if="vm.ifArray(value) == true" class="response-item family-member-item" ng-repeat="(memberItem, memberValue) in value">
+								<!-- <h4>{{"Family Member" | translate}}</h4> -->
+								<h4>{{"Member " + ($index + 1) | translate}}</h4>
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member Name" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemName}}</b></div>
+								</div>
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member DOB" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemDOB}}</b></div>
+								</div>
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member Age" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemAge}}</b></div>
+								</div>
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member Relationship" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemRelationship}}</b></div>
+								</div>
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member Gender" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemGender}}</b></div>
+								</div>
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member Passport No." | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemPassportNo}}</b></div>
+								</div>
+							</div><!-- .response-item -->
+						</div>
+					
+						<h3>{{"Terms and Conditions" | translate}}</h3>
+						<div class="row no-padding declaration">
+							<label class="col col-10 col-center" for="helper-declaration1">
+								<input type="checkbox" name="helper-declaration1" id="helper-declaration1" class="hidden-checkbox" ng-model="helperTakaful.declaration1">
+								<div class="custom-checkbox"></div>
+							</label><!-- .col -->
+							<div class="col col-90">
+								<div ng-bind-html="'Helper Summary Conditions' | translate"></div>
+							</div><!-- .col -->
+						</div><!-- .row -->
+						<p>{{"Helper Summary After Payment" | translate}}</p>
+						<br>
+						<div class="row no-padding wrap-dob">
+							<div class="input-group login col">
+								<h3 for="">{{"Select Payment Mode" | translate}}</h3>
+								<div class="text-left">
+									<input type="radio" name="helperPaymentMode" id="helperPaymentModeC" ng-model="helperTakaful.paymentMode" value="credit">
+									<label for="helperPaymentModeC">{{"International cards/ credit cards" | translate}} </label>
+									<div></div>
+									<input type="radio" name="helperPaymentMode" id="helperPaymentModeD" ng-model="helperTakaful.paymentMode" value="debit">
+									<label for="helperPaymentModeD">{{"Oman debit Cards" | translate}} </label>
+								</div>
+							</div><!-- .input-group -->
+						</div>
+						<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+						<div class="wrap-btns text-center">
+							<button type="button" class="btn-default min-width-100" ng-click="vm.goBack()">{{"Back" | translate}}</button>
+							<button type="button" class="btn-default cancel" ng-click="vm.makePayment()" ng-disabled="vm.actionDisabled">{{"Make Payment" | translate}}</button>
+						</div>
+				</div>
+			</div>
+		</div>
+   </ion-content>
+   <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+  </ion-view>

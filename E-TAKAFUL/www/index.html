@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/angular-ui-select/dist/select.min.css" rel="stylesheet">
+    <link href="css/select2theme.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/angular-ui-select/dist/select.min.js"></script>
+    <script src="lib/angular-dynamic-locale/dist/tmhDynamicLocale.min.js"></script>
+    <script src="lib/angular-translate/angular-translate.min.js"></script>
+    <script src="lib/angular-translate-loader-url/angular-translate-loader-url.min.js"></script>
+    <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+    <!-- <script src="lib/angular-maphilight/lib/angular.maphilight.js"></script> -->
+
+    <script src="cordova.js"></script>
+
+    <script src="app/app.module.js"></script>
+    <script src="app/routes.js"></script>
+    <script src="app/services.js"></script>
+    <script src="app/common/api.services.js"></script>
+    <script src="app/app.config.js"></script>
+    
+    <script src="app/home/home.controller.js"></script>
+    <script src="app/menu/menu.controller.js"></script>
+    <script src="app/products/products.controller.js"></script>
+    <script src="app/login/login.controller.js"></script>
+    <script src="app/guest/guest.controller.js"></script>
+    <script src="app/register/register.controller.js"></script>
+    <script src="app/profile/profile.controller.js"></script>
+    <!-- <script src="app/travel-takaful/travel/travel.controller.js"></script> -->
+    
+    <script src="app/travel-takaful/travel-intro/travel-intro.controller.js"></script>
+    <!-- <script src="app/travel-takaful/travel/travel-type/travel-type.controller.js"></script> -->
+    <script src="app/travel-takaful/travel-calculate/travel-calculate.controller.js"></script>
+    <!-- <script src="app/travel-takaful/travel/travel-to/travel-to.controller.js"></script> -->
+    <!-- <script src="app/travel-takaful/travel/travel-days/travel-days.controller.js"></script> -->
+    <script src="app/travel-takaful/travel-summary/travel-summary.controller.js"></script>
+    <script src="app/travel-takaful/travel-save/travel-save.controller.js"></script>
+    <script src="app/travel-takaful/travel-save-response/travel-save-response.controller.js"></script>
+    <script src="app/travel-takaful/travel-policy-generate/travel-policy-generate.controller.js"></script>
+
+    <script src="app/helper-takaful/helper-intro/helper-intro.controller.js"></script>
+    <script src="app/helper-takaful/helper-calculate/helper-calculate.controller.js"></script>
+    <script src="app/helper-takaful/helper-sponsor/helper-sponsor.controller.js"></script>
+    <script src="app/helper-takaful/helper-declaration/helper-declaration.controller.js"></script>
+    <script src="app/helper-takaful/helper-summary/helper-summary.controller.js"></script>
+    <script src="app/helper-takaful/helper-policy-generate/helper-policy-generate.controller.js"></script>
+
+
+    <script src="app/motor-takaful/motor-intro/motor-intro.controller.js"></script>
+    <script src="app/motor-takaful/motor-calculate/motor-calculate.controller.js"></script>
+    <script src="app/motor-takaful/motor-summary/motor-summary.controller.js"></script>
+    <script src="app/motor-takaful/motor-save/motor-save.controller.js"></script>
+    <script src="app/motor-takaful/motor-save-response/motor-save-response.controller.js"></script>
+    <script src="app/motor-takaful/motor-policy-generate/motor-policy-generate.controller.js"></script>
+    <script src="app/motor-takaful/motor-documents/motor-documents.controller.js"></script>
+
+    <script src="app/listing/policy/policy-list.controller.js"></script>
+    <script src="app/listing/policy/policy.controller.js"></script>
+
+    <script src="app/contact/contact.controller.js"></script>
+    <script src="app/takaful-guide/takaful-guide.controller.js"></script>
+    
+    <script src="app/listing/claim/claim-list.controller.js"></script>
+    <script src="app/listing/claim/claim.controller.js"></script>
+    <script src="app/listing/claim/claim-documents.controller.js"></script>
+    <script src="app/listing/claim/claim-intimate-response.controller.js"></script>
+    <script src="app/listing/claim/claim-intimation.controller.js"></script>
+    <script src="app/listing/claim/motor-claims/motor-claims.controller.js"></script>
+    
+    <script src="app/listing/renew/renew.controller.js"></script>
+    <script src="app/listing/renew/renew-policy-generate.controller.js"></script>
+    <script src="app/listing/claim/claim-policy-generate.controller.js"></script>
+    <script src="app/common/fileread.directive.js"></script>
+    <script src="app/common/focus-error.directive.js"></script>
+    <script src="app/common/common-header.directive.js"></script>
+
+
+    <!--  modules-->
+    
+
+  </head>
+<body ng-app="etakaful" ng-class="{ 'rtl' : rtl, 'options-open': popupClass}" class="{{language}}" dir="{{rtl ? 'rtl' : 'ltr'}}">
+      <ion-nav-view></ion-nav-view>
+  </body>
+</html>

@@ -1,0 +1,267 @@
+<ion-view hide-nav-bar="true" class="page-travel bg">
+    <common-header show-options="true" show-steps="true" start="1" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="has-header" scroll="true" ng-class="{'touch-disabled' : vm.actionDisabled}">
+        <!-- <div class="max-270"> -->
+			<!-- <div class="wrap-register-title">
+				<h2>{{"Assured Details" | translate}}</h2>
+			</div> -->
+			<div class="wrap-register-title">
+				<img class="register-icon small" src="./img/motor-takaful.png" alt="">
+				<!-- <h2>Save Travel</h2> -->
+			</div>
+			<form name="forms.motorTakaful.calculateForm" class="login-form form" ng-submit="vm.motorTakafulCalculate($event)" novalidate>
+				<div class="form-inner">
+					<div class="row no-padding wrap-dob">
+						<div class="col col-25">
+							<div class="input-group login trip-days">
+								<label for="">{{"Reg No" | translate}} &#42;</label>
+								<select type="text" name="RegistrationLetter" class="text-input shadow" ng-model="motorTakaful.RegistrationLetter" ng-class="{ 'warning' : !motorTakaful.RegistrationLetter && motorVerifyClicked }" required>
+									<option value="" selected disabled>{{"Select" | translate}}</option>
+									<option value="{{key}}" ng-repeat="(key, value) in motorTakaful.fieldData.regno">{{value}}</option>
+								</select>
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+						<div class="col col-75">
+							<div class="input-group login">
+								<label for=""> &nbsp;</label>
+								<input name="RegistrationNo" type="number" pattern="\d*" class="text-input" ng-model="motorTakaful.RegistrationNo" ng-class="{ 'warning' : !motorTakaful.RegistrationNo && motorVerifyClicked }" required>
+							</div>	
+						</div><!-- .col -->
+					</div><!-- .row -->
+					<div class="row no-padding wrap-dob">
+						<div class="col col-75">
+							<div class="input-group login">
+								
+								<label for="">{{"Driving License Number" | translate}}/ {{"Civil ID" | translate}} &#42; </label>
+								<input type="number" pattern="\d*" name="DrivingLicenseNumber" class="text-input select" ng-model="motorTakaful.DrivingLicenseNumber"
+								 ng-class="{ 'warning' : !motorTakaful.DrivingLicenseNumber && motorVerifyClicked }" required/>
+							</div>
+						</div>
+						<div class="col col-25 flex-bottom">
+							<button name="verifysubmit" type="button" class="btn-default btn-verify" ng-click="vm.verify($event);motorVerifyClicked=true">{{"Verify" | translate}}</button>
+						</div>
+					</div>
+
+					<div ng-show="vm.validated">
+					
+						<div class="row no-padding wrap-dob">
+							<div class="col col-50">
+								<div class="input-group login">
+									<label for="">{{"Manufacturing Year" | translate}} &#42;</label>
+									<input type="text" name="ManufacturingYear" class="text-input select" ng-model="motorTakaful.ManufacturingYear" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.ManufacturingYear.$invalid && motorCalculateClicked }" required disabled="true"/>
+								</div>
+							</div>
+							<div class="col col-50">
+								<div class="input-group login">
+									<label for="">{{"Make/Model" | translate}} &#42;</label>
+
+									<input type="text" class="text-input select" name="VehicleMakeText" ng-model="motorTakaful.VehicleMakeText" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.VehicleMakeText.$invalid && motorCalculateClicked }"
+									required autocomplete="off" disabled="true">
+
+
+									<!-- <select name="VehicleMake" class="text-input ng-hide select" ng-model="motorTakaful.VehicleMake" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.VehicleMake.$invalid && motorCalculateClicked }" required ng-change="vm.setVehicleName()">
+										<option value="" selected disabled>{{"Select" | translate}}</option>
+										<option value="{{key}}" ng-repeat="(key, value) in motorTakaful.fieldData.vehiclelist">{{value}}</option>
+									</select> -->
+									<!-- <input type="text" class="text-input select" name="VehicleMake" ng-model="motorTakaful.VehicleMake2" ng-focus="showSelect = true; motorTakaful.VehicleMake2 = ''" ng-blur="showSelect = false; motorTakaful.VehicleMake2 = motorTakaful.VehicleMakeText" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.VehicleMake.$invalid && motorCalculateClicked }" required autocomplete="off"> -->
+									<!-- <ul class="select-search-list" ng-show="showSelect">
+										<li ng-repeat="item in vehicleList | filter: motorTakaful.VehicleMake2" ng-click="motorTakaful.VehicleMake = item.value; motorTakaful.VehicleMakeText = item.name; motorTakaful.VehicleMake2 = value">{{item.name}}</li>
+									</ul> -->
+								</div>
+							</div>
+						</div>
+						<div class="input-group login">
+							<label for="">{{"Vehicle Type" | translate}}  &#42;</label>
+							<div class="text-input margin-bottom ng-binding">
+								{{motorTakaful.VehicleType}}
+							</div>
+						</div>
+						<div class="row no-padding wrap-dob">
+							<div class="col col-50">
+								<div class="input-group login">
+									<!-- <div class="dummy-clicker" ng-click="common.callDatePicker('motorTakaful.DriverDateofBirth', '', vm.driverAgeMin())"></div> -->
+									<label for="">{{"Driver's Date of Birth" | translate}} &#42; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+									<input type="text" name="DriverDateofBirth" class="text-input select styled-disabled" ng-model="motorTakaful.DriverDateofBirth"
+									ng-class="{ 'warning' : forms.motorTakaful.calculateForm.DriverDateofBirth.$invalid && motorCalculateClicked }" required disabled="true" />
+								</div>
+							</div><!-- .col -->
+							<div class="col col-50">
+								<div class="input-group login">
+									<div class="dummy-clicker" ng-click="common.callDatePicker('motorTakaful.FirstRegDate', vm.minFirstRegDate, vm.maxFirstRegDate)"></div>
+									<label for="">{{"First Registration Date" | translate}} &#42;</label>
+									<input type="date" name="FirstRegDate" class="text-input select styled-disabled" ng-model="motorTakaful.FirstRegDate" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.FirstRegDate.$invalid && motorCalculateClicked }"
+									max="{{vm.maxFirstRegDate}}" min="{{vm.minFirstRegDate}}" required disabled="true" />
+									<div class="icon-help" ng-click="common.tooltip('./img/tooltip-images/Mulkiya-Back-First-Reg-Date.jpg', 'image')">?</div>
+								</div>
+							</div><!-- .col -->
+						</div><!-- .row -->
+						<div class="row no-padding wrap-dob">
+							<div class="col col-25">
+								<div class="input-group login trip-days">
+									<label for="">{{"Title" | translate}} &#42;</label>
+									<select name="Title" class="text-input shadow" ng-model="motorTakaful.Title" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.Title.$invalid && motorCalculateClicked }" required>
+										<option value="" selected disabled>{{"Select" | translate}}</option>
+										<option value="Mr">{{"Mr" | translate}}</option>
+										<option value="Mrs">{{"Mrs" | translate}}</option>
+										<option value="Ms">{{"Ms" | translate}}</option>
+									</select>
+								</div><!-- .input-group -->
+							</div><!-- .col -->
+							<div class="col col-75">
+								<div class="input-group login">
+									<label for="">{{"Name" | translate}} &#42;</label>
+									<input name="InsName" type="text" class="text-input" ng-model="motorTakaful.InsName" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.InsName.$invalid && motorCalculateClicked }" required pattern="([^\s][A-zÀ-ž\s]+)">
+								</div>	
+							</div><!-- .col -->
+						</div><!-- .row -->
+						<div class="input-group login">
+							<label>{{"Mobile" | translate}} &#42;</label>
+							<input name="MobileNo" type="number" pattern="\d*" class="text-input margin-bottom" ng-model="motorTakaful.MobileNo" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.MobileNo.$invalid && motorCalculateClicked }" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" minlength="8" required>
+						</div>
+						<div class="input-group login">
+							<label>{{"Email" | translate}} &#42;</label>
+							<input name="Email" type="email" class="text-input margin-bottom text-normal" ng-model="motorTakaful.Email" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.Email.$invalid && motorCalculateClicked }" required>
+						</div>
+
+
+						<div class="input-group login">
+							<label for="">{{"Geographical Area" | translate}} &#42;</label>
+							<select name="GeographicalAera" class="text-input select margin-bottom" ng-model="motorTakaful.GeographicalAera" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.GeographicalAera.$invalid && motorCalculateClicked }" ng-change="vm.checkShowOrangeCard()" required>
+								<option value="" selected disabled>{{"Select" | translate}}</option>
+								<option value="01">{{"Sultanate of Oman" | translate}}</option>
+								<option value="02">{{"Oman and UAE" | translate}}</option>
+								<option value="03">{{"GCC" | translate}}</option>
+							</select>
+						</div>
+
+						<div class="row no-padding wrap-dob">
+							<div class="col col-50">
+								<div class="input-group login">
+									<label for="">{{"Tonnage" | translate}} &#42; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+									<div class="text-input ng-binding">
+										{{"Up to 3 ton" | translate}}
+									</div>
+									<!-- <select name="Tonnage" class="text-input select" ng-model="motorTakaful.Tonnage" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.Tonnage.$invalid && motorCalculateClicked }" required>
+										<option value="" selected disabled>Select</option>
+										<option value="1005">{{"Up to 3 ton" | translate}}</option>
+									</select> -->
+								</div>
+							</div><!-- .col -->
+							<div class="col col-50">
+								<div class="input-group login">
+									<label for="">{{"Seating Capacity" | translate}} &#42;</label>
+									<select name="SeatingCapacity" class="text-input select" ng-model="motorTakaful.SeatingCapacity" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.SeatingCapacity.$invalid && motorCalculateClicked }" required>
+										<option value="" selected disabled>{{"Select" | translate}}</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="12">12</option>
+									</select>
+								</div>
+							</div><!-- .col -->
+						</div><!-- .row -->
+						<div class="row no-padding wrap-dob">
+							<div class="col col-50">
+								<div class="input-group login">
+									<label>{{"Sum Insured(RO)" | translate}} &#42;</label>
+									<input name="VehicleValue" type="number" pattern="\d*" class="text-input text-normal" ng-model="motorTakaful.VehicleValue"  ng-class="{ 'warning' : (forms.motorTakaful.calculateForm.VehicleValue.$invalid || vm.invalidVehicleValue) && motorCalculateClicked }" max="50000" required>
+									<div class="icon-help" ng-click="common.tooltip('Sum Insured Tooltip')">?</div>
+								</div>
+							</div><!-- .col -->
+							<div class="col col-50">
+								<div class="input-group login">
+									<label for="">{{"Purchase Type" | translate}} &#42;</label>
+									<select name="PurchaseType" class="text-input select" ng-model="motorTakaful.PurchaseType" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.PurchaseType.$invalid && motorCalculateClicked }" required>
+										<option value="" selected disabled>{{"Select" | translate}}</option>
+										<option value="01">{{"Local Purchase" | translate}}</option>
+										<option value="02">{{"Import Vehicle" | translate}}</option>
+									</select>
+								</div>
+							</div><!-- .col -->
+						</div><!-- .row -->
+						<div class="row no-padding wrap-dob">
+							<div class="col">
+								<div class="input-group login">
+									<label for="" ng-class="{'warning' : !vm.claimSelected && motorCalculateClicked}">{{"Do you have claim ?" | translate}} &#42;</label>
+									<div class="text-left">
+										<input type="radio" name="checkbox" id="OutsideCapitalAreaY" ng-model="motorTakaful.hasClaim" value="Y">
+										<label for="hasClaimY">{{"Yes" | translate}} </label>
+										<input type="radio" name="checkbox" id="hasClaimN" ng-model="motorTakaful.hasClaim" value="N">
+										<label for="OutsideCapitalAreaN">{{"No" | translate}} </label>
+									</div>
+								</div>
+							</div><!-- .col -->
+						</div>
+						<div class="row no-padding wrap-dob" ng-if="motorTakaful.hasClaim == 'N'">
+							<!-- <div class="col col-50">
+								<div class="input-group login">
+									<label for="">Outside Muscat &#42;</label>
+									<div>
+										<input type="radio" name="checkbox" id="OutsideCapitalAreaY" ng-model="motorTakaful.OutsideCapitalArea" value="Y">
+										<label for="OutsideCapitalAreaY">Yes </label>
+										<input type="radio" name="checkbox" id="OutsideCapitalAreaN" ng-model="motorTakaful.OutsideCapitalArea" value="N">
+										<label for="OutsideCapitalAreaN">No </label>
+									</div>
+								</div>
+							</div> --><!-- .col -->
+							<div class="col">
+								<div class="input-group login">
+									<label for="">{{"Claim Free Years" | translate}} &#42;</label>
+									<select name="NoClaimsYear" class="text-input select" ng-model="motorTakaful.NoClaimsYear" ng-class="{ 'warning' : forms.motorTakaful.calculateForm.NoClaimsYear.$invalid && motorCalculateClicked }" required>
+										<option value="" selected disabled>{{"Select" | translate}}</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+									<div class="ncb">{{"NCB certificate should be produced" | translate}}</div>
+								</div>
+							</div><!-- .col -->
+						</div><!-- .row -->
+						<div class="input-group login">
+							<div class="text-left">
+								<input id="RoadAssistance" type="checkbox" ng-true-value="'Y'" ng-false-value="'N'" ng-model="motorTakaful.RoadAssistance">
+								<label for="RoadAssistance">{{"Road Assistance (Only applicable to comprehensive Insurance)" | translate}}</label>
+							</div>
+						</div>
+						
+
+
+						<div class="wrap-btns text-center">
+							<button type="submit" name="calculatesubmit" class="btn-default" ng-click="motorCalculateClicked=true" ng-disabled="vm.actionDisabled">{{"Get Premium" | translate}}</button>
+						</div><!-- .wrap-btns -->
+						
+					</div>
+					<div class="form-error" ng-if="vm.formError">
+						<!-- <div ng-if="!motorTakaful.hasClaim">Please Select Claim</div> -->
+						<div>{{vm.formError}}</div>
+					</div>
+
+
+
+					<div class="wrap-premium">
+						<p ng-if="motorTakaful.calculateData['Net Premium to Customer']">{{"Helper Calculate Disclaimer" | translate}}</p>
+						<div class="wrap-btns text-center">
+							<button type="button" class="btn-default min-width-100" ng-click="vm.goBack()">{{"Back" | translate}}</button>
+						</div><!-- .wrap-btns -->
+					</div>
+
+					
+
+					
+
+				</div><!-- .form-inner -->
+			</form>
+	        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    	<!-- </div> -->
+    </ion-content>
+</ion-view>

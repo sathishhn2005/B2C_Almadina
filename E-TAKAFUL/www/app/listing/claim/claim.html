@@ -1,0 +1,202 @@
+<ion-view hide-nav-bar="true" class="page-travel bg">
+    <common-header show-options="true" show-steps="false" show-back="true" services="common" logo-link="menu"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="has-header" scroll="true" ng-class="{'touch-disabled' : vm.actionDisabled}">
+        <!-- <div class="max-270"> -->
+			<!-- <div class="wrap-register-title">
+				<h2>{{"Assured Details" | translate}}</h2>
+			</div> -->
+			<div class="wrap-register-title">
+				<img class="register-icon small" src="./img/motor-takaful.png" alt="">
+				<h2>{{"Intimate Claim" | translate}}</h2>
+			</div>
+			<form name="forms.claim.claimForm" class="login-form form" ng-submit="vm.intimateClaim($event)" novalidate>
+				<div class="form-inner">
+					<div class="input-group login">
+						<div class="dummy-clicker" ng-click="common.callDatePicker('claim.LossDate', '', vm.maxLossDate)"></div>
+						<label for="">{{"Loss Date" | translate}} &#42;</label>
+						<input type="date" name="LossDate" class="text-input select margin-bottom styled-disabled" ng-model="claim.LossDate" ng-class="{ 'warning' : forms.claim.claimForm.LossDate.$invalid && claimSubmit }" max="{{vm.maxLossDate}}" required disabled="true"/>
+					</div>
+					<!-- <div class="input-group login">
+						<label for="">{{"Lisence" | translate}} &#42;</label>
+						<input type="file" name="Licence" class="text-input select margin-bottom" fileread="claim.Licence" required  accept=".jpg,.png,.jpeg,pdf"/>
+					</div>	 -->
+					<div class="margin-bottom">
+						<div class="row no-padding">
+							<div class="col no-padding">
+								<div class="input-group login">
+									<label for="">{{"Any third Party Vehicles ?" | translate}} &#42;</label>
+									<div class="text-left">
+										<input type="radio" name="ThirdPartyYN" id="ThirdPartyY" ng-model="claim.ThirdPartyYN" value="Y">
+				  						<label for="ThirdPartyY">{{"Yes" | translate}} </label>
+				 						<input type="radio" name="ThirdPartyYN" id="ThirdPartyN" ng-click="claim.TPVehicleNo = ''" ng-model="claim.ThirdPartyYN" value="N">
+				 						<label for="ThirdPartyN">{{"No" | translate}} </label>
+									</div>
+								</div>
+							</div>
+							<div class="col col-50 no-padding" ng-if="claim.ThirdPartyYN == 'Y'">
+								<div class="input-group login">
+									<label>{{"How Many" | translate}} &#42;</label>
+									<input name="TPVehicleNo" type="number" pattern="\d*" class="text-input" ng-model="claim.TPVehicleNo" ng-class="{ 'warning' : forms.claim.claimForm.TPVehicleNo.$invalid && claimSubmit }" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2" required>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="input-group login">
+						<label for="">{{"Accident Location" | translate}} &#42;</label>
+						<input type="text" name="AccidentLocation" class="text-input select margin-bottom" ng-model="claim.AccidentLocation" ng-class="{ 'warning' : forms.claim.claimForm.AccidentLocation.$invalid && claimSubmit }" required/>
+					</div>
+					<div class="margin-bottom">
+						<div class="input-group login">
+							<label for="">{{"Whether Case reported to Police ?" | translate}} &#42;</label>
+							<div class="text-left">
+								<input type="radio" name="ROPYN" id="ROPY" ng-model="claim.ROPYN" value="Y">
+		  						<label for="ROPY">{{"Yes" | translate}} </label>
+		 						<input type="radio" name="ROPYN" id="ROPN" ng-model="claim.ROPYN" value="N">
+		 						<label for="ROPN">{{"No" | translate}} </label>
+							</div>
+						</div>
+					</div>
+					<div class="input-group login">
+						<label for="">{{"Driver" | translate}} &#42;</label>
+						<select name="DriverNamePre" class="text-input margin-bottom" ng-class="{ 'warning' : forms.claim.claimForm.DriverNamePre.$invalid && claimSubmit }" ng-model="claim.DriverNamePre" required  ng-change="vm.setDriver()">
+							<option value="" selected disabled>{{"Select" | translate}}</option>
+							<option ng-repeat="item in vm.drivers" value="{{item}}">{{item}}</option>
+							<option value="Other">{{"Other" | translate}}</option>
+						</select>
+					</div>
+					<div class="input-group login" ng-show="vm.customDriver">
+						<label for="">{{"Driver's name" | translate}} &#42;</label>
+						<input type="text" name="DriverName" class="text-input select margin-bottom" ng-model="claim.DriverName" ng-class="{ 'warning' : forms.claim.claimForm.DriverName.$invalid && claimSubmit }" required pattern="([^\s][A-zÀ-ž\s]+)"/>
+					</div><!-- .input-group -->
+
+					<div class="row no-padding wrap-dob">
+						<div class="col col-67">
+							<div class="input-group login">
+								<label for="">{{"Driving License Number" | translate}} &#42;</label>
+								<input type="number" pattern="\d*" name="DrivingLicenseNumber" class="text-input select" ng-model="claim.DrivingLicenseNumber" 
+								 ng-class="{ 'warning' : !claim.DrivingLicenseNumber && claimSubmit  }" required/>
+							</div>
+						</div><!-- .col -->
+						<div class="col col-33 flex-bottom">
+							<button type="button" class="btn-default btn-verify" ng-click="vm.verify(); claimVerifySubmit=true">{{"Verify" | translate}}</button>
+						</div>
+					</div>
+
+					<div class="row no-padding wrap-dob">
+						<div class="col">
+							<div class="input-group login">
+								<label for="">{{"Driver's Date of Birth" | translate}} &#42; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+								<input type="text" name="claimDriverDateofBirth" class="text-input select styled-disabled" ng-model="claim.claimDriverDateofBirth"
+								 ng-class="{ 'warning' : forms.claim.claimForm.claimDriverDateofBirth.$invalid && claimSubmit }" required disabled="true" />
+							</div>
+							<!-- <div class="input-group login trip-days" ng-if="vm.customDriver">
+								<div class="dummy-clicker" ng-click="common.callDatePicker('claim.claimDriverDateofBirth', '', vm.yesterday)"></div>
+								<label for="">{{"Driver's Date of Birth" | translate}} &#42; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+								<input type="date" name="claimDriverDateofBirth" class="text-input select styled-disabled" ng-model="claim.claimDriverDateofBirth" ng-class="{ 'warning' : forms.claim.claimForm.claimDriverDateofBirth.$invalid && claimSubmit }" required disabled="true" ng-change="vm.calculateAge()" max="{{vm.yesterday}}"/>
+							</div> -->
+						</div><!-- .col -->
+					</div><!-- .row -->
+
+					<div class="row no-padding wrap-dob">
+						<div class="col">
+							<div class="input-group login">
+								<label for="">{{"Mobile Number" | translate}} &#42;</label>
+								<input name="MobileNo" type="number" pattern="\d*" class="text-input margin-bottom" ng-model="claim.MobileNo" ng-class="{ 'warning' : forms.claim.claimForm.MobileNo.$invalid && claimSubmit }"
+								 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8"
+								 minlength="8" required>
+							</div>
+						</div><!-- .col -->
+						<!-- <div class="col col-50">
+							<div class="input-group login">
+								<label for="">{{"Excess" | translate}} RO &#42; <br ng-if="!rtl"> &nbsp;</label>
+								<div class="text-input margin-bottom">
+									 {{claim.excess}}
+								</div>
+							</div>
+						</div>		 -->
+					</div><!-- .row -->
+					<div class="input-group login">
+						<label for="">{{"Accident Description" | translate}} &#42;</label>
+						<textarea name="AccidentDesc" class="text-input margin-bottom accident-desc" ng-model="claim.AccidentDesc" ng-class="{ 'warning' : forms.claim.claimForm.AccidentDesc.$invalid && claimSubmit }" required></textarea>
+					</div>
+
+
+
+
+					<div class="third-party-details" ng-show="claim.ThirdPartyYN == 'Y'">
+						<h2 class="title-sub">{{"Third Party Details" | translate}}</h2>
+						<div class="family-members">
+							<div class="family-members-inner" ng-repeat="driver in claim.DriverInfo">
+								<!-- <h3>{{"Driver" | translate}}</h3> -->
+								<h3>{{"Vehicle " + ($index + 1) | translate}}</h3>
+								<div class="row no-padding">
+									<div class="col">
+										<div class="input-group login">
+											<label for="">{{"Name" | translate}} &#42;</label>
+											<input name="claimDriverName{{$index + 1}}" type="text" class="text-input margin-bottom" ng-model="claim.DriverInfo[$index].DriverName"
+											ng-class="{ 'warning' : forms.claim.claimForm.claimDriverName{{$index + 1}}.$invalid && claimSubmit }" pattern="([^\s][A-zÀ-ž\s]+)">
+										</div>
+									</div>
+								</div>
+								<div class="row no-padding">
+									<div class="col col-50">
+										<div class="input-group login">
+											<label for="">{{"Mobile Number" | translate}} &#42;</label>
+											<input name="claimDriverMobile{{$index + 1}}" type="number" pattern="\d*" class="text-input" ng-model="claim.DriverInfo[$index].DriverMobile" ng-class="{ 'warning' : forms.claim.claimForm.claimDriverMobile{{$index + 1}}.$invalid && claimSubmit }"
+											oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" minlength="8">
+										</div>
+									</div><!-- .col -->
+									<div class="col col-50">
+										<div class="input-group login">
+											<label for="">{{"Reg No" | translate}}</label>
+											<input name="claimVehicleRegno{{$index + 1}}" type="text" class="text-input" ng-model="claim.DriverInfo[$index].VehicleRegno" ng-class="{ 'warning' : forms.claim.claimForm.claimVehicleRegno{{$index + 1}}.$invalid && claimSubmit }">
+										</div>
+									</div>
+								</div>
+								<div class="row no-padding">
+									<div class="col">
+										<div class="input-group login">
+											<label for="">{{"Vehicle Make" | translate}}</label>
+											<input name="claimVehicleMake{{$index + 1}}" type="text" class="text-input" ng-model="claim.DriverInfo[$index].VehicleMake" ng-class="{ 'warning' : forms.claim.claimForm.claimVehicleMake{{$index + 1}}.$invalid && claimSubmit }">
+										</div>
+									</div>
+								</div>
+						
+								<div class="text-right wrap-add-remove">
+									{{"Add another Vehicle" | translate}}
+									<div class="btn-round add" ng-click="vm.changeDriverInfo(true, $index)">+</div>
+									<div class="btn-round remove" ng-click="vm.changeDriverInfo(false, $index)">-</div>
+								</div>
+						
+						
+							</div>
+						
+						
+						</div><!-- .family-members -->
+					</div><!-- .third-party-details -->
+
+
+
+
+
+
+					
+					<div class="form-error padding-top" ng-if="vm.formError">{{vm.formError}}</div>
+					<!-- <div class="form-response" ng-if="vm.formResponse">{{vm.formResponse}}</div> -->
+
+				 	<div class="wrap-btns text-center">
+						 <button type="button" class="btn-default min-width-100" ng-click="vm.goBack()">{{"Back" | translate}}</button>
+						 <button type="submit" class="btn-default min-width-100" ng-click="claimSubmit=true" ng-disabled="vm.actionDisabled">{{"Next" | translate}}</button>
+					</div><!-- .wrap-btns -->
+				
+					
+
+					
+
+				</div><!-- .form-inner -->
+			</form>
+	        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    	<!-- </div> -->
+    </ion-content>
+</ion-view>

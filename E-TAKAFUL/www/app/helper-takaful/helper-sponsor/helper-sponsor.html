@@ -1,0 +1,253 @@
+<ion-view hide-nav-bar="true" class="page-travel bg">
+    <common-header show-options="true" show-steps="true" start="2" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="has-header" scroll="true">
+        <!-- <div class="max-270"> -->
+			<div class="wrap-register-title">
+				<img class="register-icon small" src="./img/domestic-takaful.png" alt="">
+				<!-- <h2>Save Travel</h2> -->
+			</div>
+			<form action="" name="forms.helperTakaful.sponsorForm" class="login-form form helper-sponsor-form" ng-submit="vm.helperTakafulSponsor($event)" novalidate>
+				<div class="form-inner">
+					<h3>{{"Assured Details" | translate}}</h3>
+					<div class="row no-padding wrap-dob">
+						<div class="col col-25">
+							<div class="input-group login trip-days">
+								<label for="">{{"Title" | translate}} &#42;</label>
+								<select type="text" name="AssurTitle" class="text-input shadow" ng-model="helperTakaful.AssurTitle" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.AssurTitle.$invalid && helperSaveClicked }" required>
+									<option value="" selected disabled>{{"Select" | translate}}</option>
+									<option value="Mr">{{"Mr" | translate}}</option>
+									<option value="Mrs">{{"Mrs" | translate}}</option>
+									<option value="Ms">{{"Ms" | translate}}</option>
+								</select>
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+						<div class="col col-75">
+							<div class="input-group login">
+								<label for="">{{"Name" | translate}} &#42;</label>
+								<input name="AssurName" type="text" class="text-input" ng-model="helperTakaful.AssurName" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.AssurName.$invalid && helperSaveClicked }" required pattern="([^\s][A-zÀ-ž\s]+)">
+							</div>	
+						</div><!-- .col -->
+					</div><!-- .row -->
+	
+					<div class="row no-padding wrap-dob">
+
+						<div class="col col-33">
+							<div class="input-group login">
+								<label for="">{{"Gender" | translate}} &#42;</label>
+								<select name="Gender" class="text-input select" ng-model="helperTakaful.Gender" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.Gender.$invalid && helperSaveClicked }" required>
+									<option value="" selected disabled>{{"Select" | translate}}</option>
+									<option value="M">{{"Male" | translate}}</option>
+									<option value="F">{{"Female" | translate}}</option>
+								</select>
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+
+						<div class="col col-67">
+							<div class="input-group login">
+								<div class="dummy-clicker" ng-click="common.callDatePicker('helperTakaful.DOB', helperTakaful.minDOB, helperTakaful.maxDOB)"></div>
+								<label for="">{{"DOB" | translate}} &#42;</label>
+								<input type="date" name="DOB" class="text-input styled-disabled" ng-model="helperTakaful.DOB" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.DOB.$invalid && helperSaveClicked }" required ng-change="vm.calculateAge()" min="{{helperTakaful.minDOB}}" max="{{helperTakaful.maxDOB}}" disabled="true">
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+
+					</div><!-- .row -->
+
+
+					<div class="row no-padding wrap-dob">
+						<div class="col col-50">
+							<div class="input-group login trip-days">
+								<label for="">{{"Occupation" | translate}} &#42;</label>
+								<select type="text" name="Occupation" class="text-input shadow" ng-model="helperTakaful.Occupation" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.Occupation.$invalid && helperSaveClicked }" required>
+									<option value="" selected disabled>{{"Select" | translate}}</option>
+									<option value="160">{{"Housemaid" | translate}}</option>
+									<option value="161">{{"House Driver" | translate}}</option>
+									<option value="163">{{"Gardener" | translate}}</option>
+								</select>
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+						<div class="col col-50">
+							<div class="input-group login">
+								<label>{{"Number of Years" | translate}}</label>
+								<input name="NoYears" type="number" class="text-input" ng-model="helperTakaful.NoYears" ng-change="vm.calculateToDate()" disabled="true">
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+					</div><!-- .row -->
+
+					<div class="row no-padding wrap-dob">
+
+						<div class="col col-50">
+							<div class="input-group login">
+								<div class="dummy-clicker" ng-click="common.callDatePicker('helperTakaful.FromDate', today, vm.maxPolicyDate)"></div>
+								<label for="">{{"Policy Start Date" | translate}} &#42;</label>
+								<input name="FromDate" type="date" class="text-input styled-disabled" ng-model="helperTakaful.FromDate" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.FromDate.$invalid && helperSaveClicked }" required ng-change="vm.calculateToDate()" min="{{today}}" max="{{vm.maxPolicyDate}}" disabled="true">
+ 							</div><!-- .input-group -->
+
+						</div><!-- .col -->
+						<div class="col col-50">
+							<div class="input-group login">
+								<label for="">{{"Policy End Date" | translate}}&nbsp; &nbsp;</label>
+								<input name="ToDate" type="date" class="text-input" ng-model="helperTakaful.ToDate" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.ToDate.$invalid && helperSaveClicked }" required disabled="true">
+ 							</div><!-- .input-group -->
+
+						</div><!-- .col -->
+
+					</div><!-- .row -->
+
+					<div class="row no-padding wrap-dob">
+
+						<div class="col col-50">
+							<div class="input-group login trip-days">
+								<label for="">{{"Nationality" | translate}} &#42;</label>
+								<select type="text" name="Nationality" class="text-input shadow" ng-model="helperTakaful.Nationality" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.Nationality.$invalid && helperSaveClicked }" required ng-change="vm.setNationalityText('Nationality', 'NationalityText')">
+									<option value="" selected disabled>{{"Select" | translate}}</option>
+									<option ng-repeat="(item, value) in nationality" value="{{item}}">{{value}}</option>
+								</select>
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+						<div class="col col-50">
+							<div class="input-group login trip-days">
+								<label>{{"Passport No" | translate}} &#42;</label>
+								<input name="PassportNo" type="text" class="text-input shadow" ng-model="helperTakaful.PassportNo" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.PassportNo.$invalid && helperSaveClicked }" required>
+							</div>
+						</div><!-- .col -->
+
+					</div><!-- .row -->
+
+					<div class="row no-padding wrap-dob">
+						<div class="col col-50">
+							<div class="input-group login">
+								<label>{{"Mobile" | translate}}</label>
+								<input name="Mobile" type="number" pattern="\d*" class="text-input" ng-class="{'warning' : !vm.validMobile}" ng-model="helperTakaful.Mobile" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" ng-change="vm.validateMobile()">
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+						<div class="col col-50">
+							<div class="input-group login">
+								<label>{{"Civil Id" | translate}}</label>
+								<input name="CivilID" type="number" pattern="\d*" class="text-input" ng-model="helperTakaful.CivilID">
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+
+					</div><!-- .row -->
+	
+					<h3>{{"Sponsor Details" | translate}}</h3>
+
+					<div class="row no-padding wrap-dob">
+						<div class="col col-25">
+							<div class="input-group login trip-days">
+								<label for="">{{"Title" | translate}} &#42;</label>
+								<select type="text" name="SpoTitle" class="text-input shadow" ng-model="helperTakaful.SpoTitle" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.SpoTitle.$invalid && helperSaveClicked }" required>
+									<option value="" selected disabled>{{"Select" | translate}}</option>
+									<option value="Mr">{{"Mr" | translate}}</option>
+									<option value="Mrs">{{"Mrs" | translate}}</option>
+									<option value="Ms">{{"Ms" | translate}}</option>
+								</select>
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+						<div class="col col-75">
+							<div class="input-group login">
+								<label for="">{{"Name" | translate}} &#42;</label>
+								<input name="SpoName" type="text" class="text-input" ng-model="helperTakaful.SpoName" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.SpoName.$invalid && helperSaveClicked }" required pattern="([^\s][A-zÀ-ž\s]+)">
+							</div>	
+						</div><!-- .col -->
+					</div><!-- .row -->
+	
+					<div class="row no-padding wrap-dob">
+
+						<div class="col col-33">
+							<div class="input-group login">
+								<label for="">{{"Gender" | translate}} &#42;</label>
+								<select name="SpoGender" class="text-input select" ng-model="helperTakaful.SpoGender" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.SpoGender.$invalid && helperSaveClicked }" required>
+									<option value="" selected disabled>{{"Select" | translate}}</option>
+									<option value="M">{{"Male" | translate}}</option>
+									<option value="F">{{"Female" | translate}}</option>
+								</select>
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+
+						<div class="col col-67">
+
+							<div class="input-group login trip-days">
+								<label for="">{{"Nationality" | translate}} &#42;</label>
+								<select type="text" name="SpoNationality" class="text-input shadow" ng-model="helperTakaful.SpoNationality" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.SpoNationality.$invalid && helperSaveClicked }" required ng-change="vm.setNationalityText('SpoNationality', 'SpoNationalityText')">
+									<option value="" selected disabled>{{"Select" | translate}}</option>
+									<option ng-repeat="(item, value) in nationality" value="{{item}}">{{value}}</option>
+								</select>
+							</div><!-- .input-group -->
+
+						</div><!-- .col -->
+
+					</div><!-- .row -->
+
+					<div class="row no-padding wrap-dob">
+
+						<div class="col col-50">
+							<div class="input-group login">
+								<label>{{"Mobile" | translate}} &#42;</label>
+								<input name="SpoMobile" type="number" pattern="\d*" class="text-input" ng-model="helperTakaful.SpoMobile" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.SpoMobile.$invalid && helperSaveClicked }" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" minlength="8" required>
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+						<div class="col col-50">
+							<div class="input-group login">
+								<label>{{"Civil Id" | translate}} &#42;</label>
+								<input name="Sponsorcivilid" type="number" pattern="\d*" class="text-input" ng-model="helperTakaful.Sponsorcivilid" ng-class="{ 'warning' : forms.helperTakaful.sponsorForm.Sponsorcivilid.$invalid && helperSaveClicked }" required>
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+
+					</div><!-- .row -->
+
+
+					<div class="row no-padding wrap-dob">
+						<div class="col col-50">
+							<div class="input-group login">
+								<label>{{"Post Box" | translate}}</label>
+								<input name="SpoPostBox" type="number" pattern="\d*" class="text-input" ng-model="helperTakaful.SpoPostBox">
+							</div>
+						</div><!-- .col -->
+						<div class="col col-50">
+							<div class="input-group login">
+								<label>{{"Postal Code" | translate}}</label>
+								<input name="SpoPostalCode" type="number" pattern="\d*" class="text-input" ng-model="helperTakaful.SpoPostalCode" ng-change="vm.setPostalCode()">
+								<!-- <select type="text" name="SpoPostalCode" class="text-input shadow" ng-model="helperTakaful.SpoPostalCode" ng-change="vm.setPostalCode()">
+									<option value="" selected disabled>Select</option>
+									<option ng-repeat="(item, value) in vm.postalCode" value="{{item}}">{{item}}</option>
+								</select> -->
+
+
+							</div>
+						</div><!-- .col -->
+
+					</div><!-- .row -->
+
+					<div class="row no-padding wrap-dob">
+						<div class="col col-50">
+							<div class="input-group login">
+								<label>{{"City" | translate}}</label>
+								<input name="SpoCity" type="text" class="text-input" ng-model="helperTakaful.SpoCity" disabled="true">
+							</div><!-- .input-group -->
+						</div><!-- .col -->
+						
+						<div class="col col-50">
+							<div class="input-group login">
+								<label>{{"Email" | translate}}</label>
+								<input name="SpoEmail" type="email" class="text-input margin-bottom" ng-model="helperTakaful.SpoEmail">
+							</div>
+						</div><!-- .col -->
+
+					</div><!-- .row -->
+
+					
+					<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+					
+					<div class="wrap-btns text-center">
+						<button type="button" class="btn-default min-width-100" ng-click="vm.goBack()">{{"Back" | translate}}</button>
+						<button type="button" class="btn-default min-width-100" ng-click="helperSaveClicked=true; vm.helperTakafulSponsor($event)">{{"Next" | translate}}</button>
+					</div><!-- .wrap-btns -->
+	
+					
+				</div><!-- .form-inner -->
+			</form>
+	        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    	<!-- </div> -->
+    </ion-content>
+</ion-view>

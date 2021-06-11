@@ -1,0 +1,17 @@
+<ion-view hide-nav-bar="true" class="page-home bg">
+    <common-header show-options="false" show-steps="false" show-back="false" title="Details" services="common" logo-link="login"></common-header>
+    <ion-content class="home-content has-header">
+    	<div class="wrap-home-links">
+	        <div class="login-link" ng-click="vm.goTo('login');">
+	        	<img src="./img/customer-login.png" alt="">
+	        	<h2 class="home-heading">{{"CUSTOMER LOG-IN" | translate}}</h2>
+				<p class="home-para">{{"Customer Login Text" | translate}}</p>
+	        </div>
+	        <div class="register-link" ng-click="vm.goTo('guest');">
+	        	<img src="./img/guest-login.png" alt="">
+	        	<h2 class="home-heading">{{"GUEST LOG-IN" | translate}}</h2>
+				<p class="home-para">&nbsp;</p>
+	        </div>
+        </div>
+    </ion-content>
+</ion-view>

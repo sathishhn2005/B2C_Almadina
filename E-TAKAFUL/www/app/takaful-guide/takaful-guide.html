@@ -1,0 +1,24 @@
+<ion-view hide-nav-bar="true" class="page-travel bg">
+    <common-header show-options="true" show-back="true" services="common" logo-link="menu"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="has-header" scroll="true" ng-class="{'touch-disabled' : vm.actionDisabled}">
+        <!-- <div class="max-270"> -->
+			<!-- <div class="wrap-register-title">
+				<h2>{{"Assured Details" | translate}}</h2>
+			</div> -->
+			<div class="wrap-register-title">
+				<img class="register-icon small" src="./img/takaful-guide.png" alt="">
+				<h2>{{"Takaful Guide" | translate}}</h2>
+			</div>
+            <div class="login-form">
+				<div class="max-300 takaful-guide-content">
+					<h3>{{"Brief Intro Heading" | translate}}</h3>
+					<div ng-bind-html="'Brief Intro P 1' | translate"></div>
+					<div ng-bind-html="'Brief Intro P 2' | translate"></div>
+				</div>
+            </div>
+	        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    	<!-- </div> -->
+    </ion-content>
+</ion-view>
+<!--  -->

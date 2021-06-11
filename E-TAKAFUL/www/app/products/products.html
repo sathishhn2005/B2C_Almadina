@@ -1,0 +1,29 @@
+<ion-view hide-nav-bar="true" class="page-products bg">
+    <common-header show-options="true" show-steps="false" show-back="true" services="common" logo-link="menu"></common-header>
+    <ion-content class="products-content has-header">
+		<h2 class="page-menu-title products"><img src="./img/products.png" alt="">{{"Products" | translate}}</h2>
+    	<div class="wrap-products-links">
+			<ul class="product-list">
+				<li class="product-item" ng-click="vm.goTo('motor-intro')">
+					<div class="wrap-icon">
+						<img src="./img/motor-takaful.png">
+					</div>
+					<p>{{"Motor Takaful" | translate}}</p>
+				</li>
+				<li class="product-item" ng-click="vm.goTo('travel-intro')">
+					<div class="wrap-icon">
+						<img src="./img/travel-takaful.png">
+					</div>
+					<p>{{"Travel Takaful" | translate}}</p>
+				</li>
+				<li class="product-item" ng-click="vm.goTo('helper-intro')">
+					<div class="wrap-icon">
+						<img src="./img/domestic-takaful.png">
+					</div>
+					<p>{{"Domestic Helper Takaful" | translate}}</p>
+				</li>
+			</ul>
+        </div>
+        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    </ion-content>
+</ion-view>

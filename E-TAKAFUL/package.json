@@ -1,0 +1,49 @@
+{
+  "name": "ETAKAFUL",
+  "version": "0.0.1",
+  "description": "Al Madina Takaful",
+  "devDependencies": {
+    "@ionic/v1-toolkit": "1.0.8",
+    "gulp": "^3.5.6",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^3.1.0"
+  },
+  "dependencies": {
+    "@ionic/pro": "1.0.20",
+    "cordova-android": "^6.3.0",
+    "cordova-android-support-gradle-release": "^1.4.4",
+    "cordova-ios": "^4.5.5",
+    "cordova-plugin-crosswalk-webview": "^2.4.0",
+    "cordova-plugin-device": "^2.0.1",
+    "cordova-plugin-globalization": "^1.0.9",
+    "cordova-plugin-inappbrowser": "^3.0.0",
+    "cordova-plugin-ionic-webview": "^1.1.16",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-whitelist": "^1.3.3"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-globalization": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-crosswalk-webview": {
+        "XWALK_VERSION": "23+",
+        "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
+        "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
+        "XWALK_MODE": "embedded",
+        "XWALK_MULTIPLEAPK": "true"
+      },
+      "cordova-android-support-gradle-release": {
+        "ANDROID_SUPPORT_VERSION": "27.+"
+      }
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  }
+}

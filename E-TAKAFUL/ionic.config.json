@@ -1,0 +1,16 @@
+{
+  "name": "E-TAKAFUL",
+  "integrations": {
+    "gulp": {},
+    "cordova": {}
+  },
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ],
+  "pro_id": "bb0bf401",
+  "id": "bb0bf401"
+}

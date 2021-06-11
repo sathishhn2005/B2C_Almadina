@@ -1,0 +1,28 @@
+<ion-view hide-nav-bar="true" class="travel-response bg">
+    <common-header show-options="true" show-steps="true" start="4" end="4" show-back="false" services="common" logo-link="menu"></common-header>
+    <ion-content class="travel-content save-travel-content has-header" scroll="true">
+    	<div class="color-container">
+    		<div class="max-300">
+    			<div class="response-title">{{"Motor Policy" | translate}}</div>
+		      	<div class="travel-response-data" ng-if="motorTakaful.policyData.Data.PolicyNo">
+		      		<div class="response-item">
+						<div class="response-item-value" ng-bind-html="motorTakaful.policyData.message"></div>
+					</div>
+					<!-- <div class="response-item">
+						<div>{{"Policy Number" | translate}}</div>
+						<div class="response-item-value"><b>{{motorTakaful.policyData.Data.PolicyNo}}</b></div>
+					</div> -->
+				<div>
+				<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+				<div class="wrap-btns text-center">
+					<button type="button" class="btn-default min-width-100" ng-click="vm.goTo('menu');">{{"Our Products" | translate}}</button>
+				</div>
+				<div class="wrap-download-pdf">
+					<a class="download-pdf" ng-click="vm.downloadPDF(motorTakaful.policyData.Data.PolicyDetails)" ng-if="motorTakaful.policyData.Data.PolicyDetails">{{"Download Policy Details" | translate}}</a>
+					<a class="download-pdf" ng-click="vm.downloadPDF(motorTakaful.policyData.Data.Certificate)" ng-if="motorTakaful.policyData.Data.Certificate">{{"Download Certificate" | translate}}</a>
+					<a class="download-pdf" ng-click="vm.downloadPDF(motorTakaful.policyData.Data.ProposalForm)" ng-if="motorTakaful.policyData.Data.ProposalForm">{{"Proposal Form" | translate}}</a>
+				</div>
+			</div>
+		</div>
+   </ion-content>
+  </ion-view>

@@ -1,0 +1,23 @@
+<ion-view hide-nav-bar="true" class="page-products bg">
+    <common-header show-options="true" show-steps="false" show-back="true" services="common" logo-link="menu"></common-header>
+    <ion-content class="products-content has-header" scroll="false">
+		<h2 class="page-menu-title products"><img src="./img/motor-takaful.png" alt="">{{"Motor Claims" | translate}}</h2>
+    	<div class="wrap-products-links">
+			<ul class="product-list">
+				<li class="product-item" ng-click="vm.goTo('claim-intimation')">
+					<div class="wrap-icon">
+						<img src="./img/policy.png">
+					</div>
+					<p>{{"Claim Intimation" | translate}}</p>
+				</li>
+				<li class="product-item" ng-click="vm.goTo('claim-list')">
+					<div class="wrap-icon">
+						<img src="./img/claim.png">
+					</div>
+					<p>{{"View Claims" | translate}}</p>
+				</li>
+			</ul>
+        </div>
+        <div class="footer">{{"www.almadinatakaful.com" | translate}}</div>
+    </ion-content>
+</ion-view>

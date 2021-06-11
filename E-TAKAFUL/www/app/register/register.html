@@ -1,0 +1,43 @@
+<ion-view hide-nav-bar="true" class="page-register bg" cache-view="false">
+    <common-header show-options="false" show-steps="false" show-back="true" services="common" logo-link="login"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="register-content has-header" scroll="true">
+    	<div class="wrap-register-title">
+			<img class="register-icon" src="./img/guest-login.png" alt="">
+			<h2>{{"Registration" | translate}}</h2>
+		</div>
+		<form name="vm.register.formName" action="" class="form register-form" ng-submit="vm.createUser($event);" novalidate>
+			<div class="form-inner">
+				<input type="text" name="fullname" class="text-input margin-bottom" placeholder="{{'Full Name' | translate}}" ng-model="vm.register.full_name"  ng-class="{ 'warning' : vm.register.formName.fullname.$invalid && submitClicked }" required pattern="([^\s][A-zÀ-ž\s]+)">
+				<input type="password" class="text-input margin-bottom" placeholder="{{'Password' | translate}}" ng-model="vm.register.password" ng-class="{ 'warning' : vm.register.formName.password.$invalid && submitClicked }" required name="password">
+				<input type="number" pattern="\d*" name="civilid" class="text-input margin-bottom" placeholder="{{'Civil ID' | translate}}" ng-model="vm.register.civilid" ng-class="{ 'warning' : vm.register.formName.civilid.$invalid && submitClicked }" required>
+				<input type="email" name="email" class="text-input margin-bottom" placeholder="{{'Email ID' | translate}}" ng-model="vm.register.email"  ng-class="{ 'warning' : vm.register.formName.email.$invalid && submitClicked }" required>
+				<input type="number" pattern="\d*" name="phone" class="text-input margin-bottom" placeholder="{{'Phone Number' | translate}}" ng-model="vm.register.phone" ng-class="{ 'warning' : vm.register.formName.phone.$invalid && submitClicked }" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="8" minlength="8">
+				<!-- <div class="row no-padding wrap-dob">
+					<div class="col col-50">
+						<select name="" id="" class="text-input select">
+							<option class="placeholder" selected disabled value="">Gender</option>
+							<option value="">Male</option>
+							<option value="">Female</option>
+						</select>
+					</div>
+					<div class="col col-50">
+						<select name="" id="" class="text-input select">
+							<option class="placeholder" selected disabled value="">DOB</option>
+						</select>
+					</div>
+				</div> -->
+				<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+				<div class="form-response" ng-if="vm.formResponse">{{vm.formResponse}}</div>
+				<button type="submit" class="btn-register" ng-click="submitClicked=true" ng-disabled="vm.actionDisabled">{{"Register" | translate}}</button>
+
+				<div class="disclaimer text-left">
+					<h3>{{"Disclaimer" | translate}}</h3>
+					<p>{{"Disclaimer Register 1" | translate}}</p>
+					<p>{{"Disclaimer Register 2" | translate}}</p>
+				</div>
+			</div>
+		</form>
+        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    </ion-content>
+</ion-view>

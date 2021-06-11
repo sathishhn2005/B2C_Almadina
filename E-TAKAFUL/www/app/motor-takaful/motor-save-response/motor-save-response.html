@@ -1,0 +1,88 @@
+<ion-view hide-nav-bar="true" class="travel-response bg">
+    <common-header show-options="true" show-steps="true" start="3" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+    <ion-content class="travel-content save-travel-content has-header" scroll="true" ng-class="{'touch-disabled' : vm.actionDisabled}">
+    	<div class="color-container">
+    		<div class="max-300">
+    			<div class="response-title">{{"Motor Premium Summary" | translate}}</div>
+		      	<div class="travel-response-data">
+					<!-- <div> -->
+						<div ng-repeat="(item, value) in motorTakaful.motorSaveData">
+							<h3>{{item}}</h3>
+							<div class="response-item" ng-repeat="(subItem, itemValue) in value" ng-if="vm.ifArray(value) == false">
+								<!-- <div>{{subItem}}</div> -->
+								<div ng-if="vm.ifArray(value) == false" class="row no-padding">
+									<div class="col col-50">{{subItem}}</div>
+									<div class="response-item-value col col-50"><b>{{itemValue}}</b></div>
+								</div><!-- .row -->
+							</div><!-- .response-item -->
+							<div ng-if="vm.ifArray(value) == true" class="response-item family-member-item" ng-repeat="(memberItem, memberValue) in value">
+								<!-- <h4>{{"Driver" | translate}}</h4> -->
+								<h4>{{"Driver " + ($index + 1) | translate}} {{$index + 1}}</h4>
+								<div class="row no-padding">
+									<div class="col col-50">{{"Name" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.Name}}</b></div>
+								</div><!-- .row -->
+								<div class="row no-padding">
+									<div class="col col-50">{{"DOB" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.Age}}</b></div>
+								</div><!-- .row -->
+								<div class="row no-padding">
+									<div class="col col-50">{{"Relationship" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.Relationship}}</b></div>
+								</div><!-- .row -->
+							</div><!-- .response-item -->
+						</div>
+						<h3>{{"Terms and Conditions" | translate}}</h3>
+						<div class="row no-padding declaration">
+							<label class="col col-10" for="motor-declaration1">
+								<input type="checkbox" name="motor-declaration1" id="motor-declaration1" class="hidden-checkbox" ng-model="motorTakaful.declaration1">
+								<div class="custom-checkbox"></div>
+							</label>
+							<div class="col col-90">
+								<div ng-bind-html="'I have read and accepted the policy terms and conditions' | translate"></div>
+								<div>{{"(After payment the details will be emailed to your registered email ID)" | translate}}</div>
+							</div>
+						</div>
+						<label class="row no-padding declaration" for="motor-declaration3">
+							<label class="col col-10" for="motor-declaration3">
+								<input type="checkbox" name="motor-declaration3" id="motor-declaration3" class="hidden-checkbox" ng-model="motorTakaful.declaration3">
+								<div class="custom-checkbox"></div>
+							</label>
+							<div class="col col-90">
+								<div ng-bind-html="'motor declaration 3' | translate"></div>
+							</div>
+						</label>
+						<label class="row no-padding declaration" for="motor-declaration2">
+							<div class="col col-10">
+								<input type="checkbox" name="motor-declaration2" id="motor-declaration2" class="hidden-checkbox" ng-model="motorTakaful.declaration2">
+								<div class="custom-checkbox"></div>
+							</div>
+							<div class="col col-90">
+								<div>{{"ROP upload will be done the next working day" | translate}}</div>
+							</div>
+						</label>
+						<br>
+						<div class="row no-padding wrap-dob">
+							<div class="input-group login col">
+								<h3 for="">{{"Select Payment Mode" | translate}}</h3>
+								<div class="text-left">
+									<input type="radio" name="motorPaymentMode" id="motorPaymentModeC" ng-model="motorTakaful.paymentMode" value="credit">
+									<label for="motorPaymentModeC">{{"International cards/ credit cards" | translate}} </label>
+									<div></div>
+									<input type="radio" name="motorPaymentMode" id="motorPaymentModeD" ng-model="motorTakaful.paymentMode" value="debit">
+									<label for="motorPaymentModeD">{{"Oman debit Cards" | translate}} </label>
+								</div>
+							</div><!-- .input-group -->
+						</div>
+						<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+						<div class="wrap-btns text-center">
+							<button type="button" class="btn-default min-width-100" ng-click="vm.goBack();">{{"Back" | translate}}</button>
+							<button type="button" class="btn-default cancel" ng-click="vm.makePayment()" ng-disabled="vm.actionDisabled">{{"Make Payment" | translate}}</button>
+						</div><!-- .wrap-btns -->
+			<!-- </div> -->
+				</div><!-- .travel-response-data -->
+			</div><!-- .max-300 -->
+		</div><!-- .color-container -->
+   </ion-content>
+   <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+  </ion-view>

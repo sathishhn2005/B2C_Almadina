@@ -1,0 +1,52 @@
+<ion-view hide-nav-bar="true" class="page-register bg" cache-view="false">
+	<common-header show-options="true" show-steps="false" show-back="true" services="common" logo-link="menu"></common-header>
+    <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+    <ion-content class="register-content has-header" scroll="true">
+    	<div class="wrap-register-title">
+			<img class="register-icon" src="./img/customer-login.png" alt="">
+			<h2>{{"Profile" | translate}}</h2>
+		</div>
+		<div class="wrap-profile form register-form">
+			<div class="form-inner">
+				<div class="input-group login edit">
+					<label>{{"Name" | translate}}</label>
+					<div class="text-input margin-bottom">
+						{{vm.user.name}}
+					</div>
+					<div class="btn-edit" ng-click="vm.editField('name')"></div>
+				</div>
+				<div class="input-group login edit">
+					<label>{{"Email" | translate}}</label>
+					<div class="text-input margin-bottom">
+						{{vm.user.email}}
+					</div>
+					<div class="btn-edit" ng-click="vm.editField('email')"></div>
+				</div>
+				<div class="input-group login edit">
+					<label>{{"Mobile" | translate}}</label>
+					<div class="text-input margin-bottom">
+						{{vm.user.mobile}}
+					</div>
+					<div class="btn-edit" ng-click="vm.editField('mobile')"></div>
+				</div>
+				<div class="input-group login edit">
+					<label>{{"Civil Id" | translate}}</label>
+					<div class="text-input margin-bottom">
+						{{vm.user.civilid}}
+					</div>
+					<div class="btn-edit" ng-click="vm.editField('civilid')"></div>
+				</div>
+				<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+				<div class="form-response" ng-if="vm.formResponse">{{vm.formResponse}}</div>
+			</div>
+			<div class="wrap-btns">
+			<button class="btn-default min-width-100" ng-click="common.goBack()" ng-disabled="vm.actionDisabled">{{"Back" | translate}}</button>
+			</div>
+		</div>
+
+		<!-- <form name="vm.register.formName" action="" class="form register-form" ng-submit="vm.createUser($event);" novalidate> -->
+
+		<!-- </form> -->
+        <div class="footer relative">{{"www.almadinatakaful.com" | translate}}</div>
+    </ion-content>
+</ion-view>

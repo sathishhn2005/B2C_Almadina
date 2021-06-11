@@ -1,0 +1,96 @@
+<ion-view hide-nav-bar="true" class="travel-response bg">
+	<common-header show-options="true" show-steps="false" show-back="false" services="common" logo-link="menu"></common-header>
+    <ion-content class="travel-content save-travel-content has-header" scroll="true">
+    	<div class="color-container">
+    		<div class="max-300">
+    			<div class="response-title">{{"Claim Intimate Summary" | translate}}</div>
+		      	<div class="travel-response-data" ng-if="claim.intData.Data.IntRefNo">
+		      		<div class="response-item">
+						<div class="response-item-value" ng-bind-html="claim.intData.message"></div>
+					</div>
+					<!-- <div class="response-item">
+						<div>{{"Intimation Reference Number" | translate}}</div>
+						<div class="response-item-value"><b>{{claim.intData.Data.IntRefNo}}</b></div>
+					</div> -->
+				<div>
+
+
+
+				<div class="row no-padding wrap-dob">
+					<div class="input-group login col">
+						<div>{{"The Excess Amount is" | translate}} {{"RO" | translate}} {{claim.excess}}</div>
+						<label for="">{{"Would You like to pay the Excess" | translate}}</label>
+						<div class="text-left">
+							<input type="radio" name="payExcessY" id="payExcessY" ng-model="claim.payExcess" value="Y" ng-change="vm.setrenewPaymentMode()">
+							<label for="payExcessY">{{"Yes" | translate}} </label>
+							<div></div>
+							<input type="radio" name="payExcessN" id="payExcessN" ng-model="claim.payExcess" value="N" ng-change="vm.setpayExcessN()">
+							<label for="payExcessN">{{"No" | translate}} </label>
+						</div>
+					</div><!-- .input-group -->
+				</div>
+
+				<div ng-show="claim.payExcess === 'Y'">
+
+					<h3>{{"I Agree" | translate}}</h3>
+					<label class="row no-padding declaration" for="claimdeclaration1">
+						<div class="col col-10">
+							<input type="checkbox" name="claimdeclaration1" id="claimdeclaration1" class="hidden-checkbox" ng-model="claim.claimdeclaration1">
+							<div class="custom-checkbox"></div>
+						</div>
+						<div class="col col-90">
+							<div>{{"Claim Declaration 1" | translate}}</div>
+						</div>
+					</label>
+					<label class="row no-padding declaration" for="claimdeclaration2">
+						<div class="col col-10">
+							<input type="checkbox" name="claimdeclaration2" id="claimdeclaration2" class="hidden-checkbox" ng-model="claim.claimdeclaration2">
+							<div class="custom-checkbox"></div>
+						</div>
+						<div class="col col-90">
+							<div>{{"Claim Declaration 2" | translate}}</div>
+						</div>
+					</label>
+					<label class="row no-padding declaration" for="claimdeclaration3">
+						<div class="col col-10">
+							<input type="checkbox" name="claimdeclaration3" id="claimdeclaration3" class="hidden-checkbox" ng-model="claim.claimdeclaration3">
+							<div class="custom-checkbox"></div>
+						</div>
+						<div class="col col-90">
+							<div>{{"Claim Declaration 3" | translate}}</div>
+						</div>
+					</label>
+				</div>
+
+				<div class="row no-padding wrap-dob" ng-show="claim.payExcess === 'Y'">
+					<div class="input-group login col">
+						<h3 for="">{{"Select Payment Mode" | translate}}</h3>
+						<div class="text-left">
+							<input type="radio" name="claimPaymentMode" id="claimPaymentModeC" ng-model="claim.paymentMode" value="credit" ng-change="vm.setrenewPaymentMode()">
+							<label for="claimPaymentModeC">{{"International cards/ credit cards" | translate}} </label>
+							<div></div>
+							<input type="radio" name="claimPaymentMode" id="claimPaymentModeD" ng-model="claim.paymentMode" value="debit" ng-change="vm.setrenewPaymentMode()">
+							<label for="claimPaymentModeD">{{"Oman debit Cards" | translate}} </label>
+						</div>
+					</div><!-- .input-group -->
+				</div>
+
+				
+
+				<div class="wrap-btns text-center" ng-show="claim.payExcess === 'Y'">
+					<button type="button" class="btn-default cancel" ng-click="vm.makePayment()" ng-disabled="vm.actionDisabled">{{"Make Payment" | translate}}</button>
+				</div><!-- .wrap-btns -->
+
+				<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+				<div class="wrap-btns text-center">
+					<button type="button" class="btn-default min-width-100" ng-click="vm.goTo('menu');">{{"Our Products" | translate}}</button>
+				</div>
+				<div class="wrap-download-pdf">
+					<a class="download-pdf" ng-click="vm.downloadPDF(claim.intData.Data.PolicyDetails)" ng-if="claim.intData.Data.PolicyDetails">{{"Download Policy Details" | translate}}</a>
+					<a class="download-pdf" ng-click="vm.downloadPDF(claim.intData.Data.Certificate)" ng-if="claim.intData.Data.Certificate">{{"Download Certificate" | translate}}</a>
+				</div>
+			</div>
+		</div>
+   </ion-content>
+	<img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+  </ion-view>

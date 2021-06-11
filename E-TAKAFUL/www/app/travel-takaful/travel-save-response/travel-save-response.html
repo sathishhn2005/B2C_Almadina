@@ -1,0 +1,109 @@
+<ion-view hide-nav-bar="true" class="travel-response bg">
+	<common-header show-options="true" show-steps="true" start="3" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+    <ion-content class="travel-content save-travel-content has-header" scroll="true">
+    	<div class="color-container">
+    		<!-- <iframe src="{{vm.url}}" frameborder="0"></iframe> -->
+    		<div class="max-300">
+    			<div class="response-title">{{"Travel Premium Summary" | translate}}</div>
+		      	<div class="travel-response-data">
+					<!-- <div> -->
+						<div ng-repeat="(item, value) in travelTakaful.travelSaveData">
+							<h3>{{item}}</h3>
+							<div class="response-item" ng-repeat="(subItem, itemValue) in value" ng-if="vm.ifArray(value) == false">
+								<!-- <div>{{subItem}}</div> -->
+								<div ng-if="vm.ifArray(value) == false" class="row no-padding">
+									<div class="col col-50">{{subItem}}</div>
+									<div class="response-item-value col col-50"><b>{{itemValue}}</b></div>
+								</div><!-- .row -->
+							</div><!-- .response-item -->
+							<div ng-if="vm.ifArray(value) == true" class="response-item family-member-item" ng-repeat="(memberItem, memberValue) in value">
+								<!-- <h4>{{"Family Member" | translate}}</h4> -->
+								<h4>{{"Member " + ($index + 1) | translate}}</h4>
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member Name" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemName}}</b></div>
+								</div><!-- .row -->
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member DOB" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemDOB}}</b></div>
+								</div><!-- .row -->
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member Age" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemAge}}</b></div>
+								</div><!-- .row -->
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member Relationship" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemRelationship}}</b></div>
+								</div><!-- .row -->
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member Gender" | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemGender}}</b></div>
+								</div><!-- .row -->
+								<div class="row no-padding">
+									<div class="col col-50">{{"Member Passport No." | translate}}</div>
+									<div class="col col-50"><b>{{memberValue.MemPassportNo}}</b></div>
+								</div><!-- .row -->
+							</div><!-- .response-item -->
+						</div>
+						<h3>{{"I Agree" | translate}}</h3>
+						<label class="row no-padding declaration" for="declaration1">
+							<div class="col col-10">
+								<input type="checkbox" name="declaration1" id="declaration1" class="hidden-checkbox" ng-model="travelTakaful.declaration1">
+								<div class="custom-checkbox"></div>
+							</div>
+							<div class="col col-90">
+								<div>{{"travel Save Declaration 1" | translate}}</div>
+							</div>
+						</label>
+						<label class="row no-padding declaration" for="declaration2">
+							<div class="col col-10">
+								<input type="checkbox" name="declaration2" id="declaration2" class="hidden-checkbox" ng-model="travelTakaful.declaration2">
+								<div class="custom-checkbox"></div>
+							</div>
+							<div class="col col-90">
+								<div>{{"travel Save Declaration 2" | translate}}</div>
+							</div>
+						</label>
+						<div class="row no-padding declaration">
+							<label class="col col-10" for="declaration4">
+								<input type="checkbox" name="declaration4" id="declaration4" class="hidden-checkbox" ng-model="travelTakaful.declaration4">
+								<div class="custom-checkbox"></div>
+							</label>
+							<div class="col col-90">
+								<div ng-bind-html="'travel Save Declaration 4' | translate"></div>
+							</div>
+						</div>
+						<label class="row no-padding declaration" for="declaration3">
+							<div class="col col-10">
+								<input type="checkbox" name="declaration3" id="declaration3" class="hidden-checkbox" ng-model="travelTakaful.declaration3">
+								<div class="custom-checkbox"></div>
+							</div>
+							<div class="col col-90">
+								<div>{{"travel Save Declaration 3" | translate}}</div>
+							</div>
+						</label>
+						<br>
+						<div class="row no-padding wrap-dob">
+							<div class="input-group login col">
+								<h3 for="">{{"Select Payment Mode" | translate}}</h3>
+								<div class="text-left">
+									<input type="radio" name="paymentMode" id="paymentModeC" ng-model="travelTakaful.paymentMode" value="credit" ng-change="vm.setpaymentMode()">
+									<label for="paymentModeC">{{"International cards/ credit cards" | translate}} </label>
+									<div></div>
+									<input type="radio" name="paymentMode" id="paymentModeD" ng-model="travelTakaful.paymentMode" value="debit" ng-change="vm.setpaymentMode()">
+									<label for="paymentModeD">{{"Oman debit Cards" | translate}} </label>
+								</div>
+							</div><!-- .input-group -->
+						</div>
+						<div class="form-error" ng-if="vm.formError">{{vm.formError}}</div>
+						<div class="wrap-btns text-center">
+							<button type="button" class="btn-default min-width-100" ng-click="vm.goBack();">{{"Back" | translate}}</button>
+							<button type="button" class="btn-default cancel" ng-click="vm.makePayment()" ng-disabled="vm.actionDisabled">{{"Make Payment" | translate}}</button>
+						</div><!-- .wrap-btns -->
+			<!-- </div> -->
+				</div><!-- .travel-response-data -->
+			</div><!-- .max-300 -->
+		</div><!-- .color-container -->
+   </ion-content>
+   <img class="takaful-preloader" src="./img/preloader.gif" alt="takaful" ng-if="vm.preloader">
+  </ion-view>

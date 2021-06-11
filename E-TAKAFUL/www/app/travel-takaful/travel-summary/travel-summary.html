@@ -1,0 +1,38 @@
+<ion-view hide-nav-bar="true" class="page-home travel-summary bg">
+	<common-header show-options="true" show-steps="true" start="1" end="4" show-back="true" services="common" logo-link="menu"></common-header>
+    <ion-content class="travel-content has-header" scroll="true">
+    	<h2>{{"Travel Premium Summary" | translate}}</h2>
+    	<div class="color-container summary-page">
+    		<!-- <div class="max-300"> -->
+		      	<div class="travel-response-data">
+		      		<div class="response-head row">
+						<div class="col col-33 col-center"><b>{{"Benifit" | translate}}</b></div>
+						<div class="col col-33 text-center"><b>{{"Prestige" | translate}}</b></div>
+						<div class="col col-33 text-center"><b>{{"Regular" | translate}}</b></div>
+					</div>
+					<div class="response-item row" ng-repeat="(key, value) in vm.travelResponse.Data" ng-class="{'premium' : $last}">
+						<div class="col col-33 text-label col-center" ng-bind-html="key">{{key}}</div>
+						<div class="col col-33 text-center response-item-value" ng-bind-html="value.prestigePrem"></div>
+						<div class="col col-33 text-center response-item-value" ng-bind-html="value.regularPrem"></div>
+					</div>
+					<div class="response-item row">
+						<div class="col col-33">
+							<button type="button" class="btn-default" ng-click="vm.goBack();">{{"Back" | translate}}</button>
+						</div>
+						<div class="col col-33 text-center response-item-value">
+							<button type="button" class="btn-default" ng-click="vm.selectPremium('premium')"  ng-if="vm.travelResponse.valid.prestigePrem === 'Y'">{{"Select" | translate}}</button>
+						</div>
+						<div class="col col-33 text-center response-item-value">
+							<button type="button" class="btn-default" ng-click="vm.selectPremium('regular')" ng-if="vm.travelResponse.valid.regularPrem === 'Y'">{{"Select" | translate}}</button>
+						</div>
+					</div>
+				</div>
+			<!-- </div> -->
+		</div>
+		<div class="row" ng-repeat="(key, value) in vm.travelResponse.pdf" ng-if="vm.travelResponse.pdf">
+			<div class="col text-center">
+				<button type="button" class="btn-default" ng-click="vm.downloadPDF(value)">{{key}}</button>
+			</div>
+		</div>
+   </ion-content>
+</ion-view>
